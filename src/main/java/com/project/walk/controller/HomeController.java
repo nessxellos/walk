@@ -26,5 +26,11 @@ public class HomeController {
 		return "join";
 	}
 	
-
+	@PostMapping("join")
+	public String join(MemberVO memberVO) {
+		memberService.join(memberVO);
+		
+		return "redirect:login";
+	}
+	
 }
