@@ -9,6 +9,8 @@ public class MemberVO {
 	private int id;
 	private String password;
 	private String username;
+	private String email;
+	private String addr;
 	private Date regdate;
 //	private String auth;
 	
