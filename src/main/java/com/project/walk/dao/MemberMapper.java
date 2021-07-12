@@ -17,7 +17,9 @@ public interface MemberMapper {
 	public void update(MemberVO memberVO);//회원정보 수정
 	public void delete(int id);//회원 탈퇴
 	
+	//회원 리스트, 회원 수 
 	public List<MemberVO> list();
+	public int count();
 	
 	
 	

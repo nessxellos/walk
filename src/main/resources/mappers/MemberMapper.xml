@@ -17,4 +17,23 @@
 		]]>
 	</select> 
 	
+	<select id="count" resultType="int">
+		<![CDATA[
+			SELECT count(id) 
+			FROM membervo
+		]]>
+	</select>
+	
+	<select id="list" resultType="memberVO" >
+		<![CDATA[
+		SELECT * FROM membervo ORDER BY id DESC
+		]]>
+	</select>
+	
+	<select id="detail" resultType="memberVO">
+		<![CDATA[
+		SELECT * FROM memberVO WHERE id=#{id}
+		]]>
+	</select>
+	
 </mapper>

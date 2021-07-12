@@ -26,8 +26,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public MemberVO detail(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return memberMapper.detail(id);
 	}
 
 	@Override
@@ -44,8 +43,12 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public List<MemberVO> list() {
-		// TODO Auto-generated method stub
-		return null;
+		return memberMapper.list();
+	}
+
+	@Override
+	public int count() {
+		return memberMapper.count();
 	}
 
 

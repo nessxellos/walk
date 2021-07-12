@@ -10,12 +10,19 @@
 </head>
 <body>
 	home
+	
+	이메일은 ${memberVO.email } 입니다?
                 <c:choose>
                 	<c:when test="${ not empty memberVO }">
+                	<br/>
+                	${memberVO.username } 님 환영합니다.
+                	
                 		<li><a href="/member/logout">로그아웃</a></li>
                 		<li><a href="/member/info">회원정보확인</a></li>
                 		<li><a href="/member/modify">회원정보수정</a></li>
-                		<li><a href="/member/remove">회원탈퇴</a></li>
+                		<li><a href="/member/remove">회원탈퇴</a></li><br/><br/>
+                		
+                		<li><a href="/member/list">회원 목록 보기</a></li>
                 	</c:when>
                 	<c:otherwise>
                 		<li><a href="/join">회원가입</a></li>

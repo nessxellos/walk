@@ -15,5 +15,6 @@ public interface MemberService {
 	public void delete(int id);//회원 탈퇴
 	
 	public List<MemberVO> list();//회원 전체리스트보기 - 관리자메뉴
+	public int count(); // 회원 수
 
 }
