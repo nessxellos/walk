@@ -52,9 +52,9 @@ public class MemberController {
 	//회원 상세보기
 	@GetMapping("detail/{id}")
 	public String detail(@PathVariable int id, Model model) {
-		MemberVO memberVO = memberservice.detail(id);
-		model.addAttribute("member", memberVO);
-		return "detail";
+		MemberVO member = memberservice.detail(id);
+		model.addAttribute("member", member);
+		return "member/detail";
 	}
 	
 	

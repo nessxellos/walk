@@ -13,7 +13,7 @@
 <c:forEach items="${ lists }" var="membervo"><br/>
 <div class="card bg-warning">
   <div class="card-body">
-    <h4 class="card-title"><a href="/detail/${membervo.id }">작성자 : ${ membervo.username } </a><br /></h4>
+    <h4 class="card-title"><a href="/member/detail/${membervo.id }">작성자 : ${ membervo.username } </a><br /></h4>
     <p class="card-text">가입일 : <fmt:formatDate value="${ membervo.regdate }" pattern="yyyy-MM-dd"/><br /></p>
     <p class="card-text">이메일 : ${ membervo.email } <br /></p>
 	<p class="card-text">주소 : ${ membervo.addr } <br /></p>
