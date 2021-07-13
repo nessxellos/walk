@@ -57,23 +57,23 @@ public class BoardUserController {
 			HttpServletRequest request, RedirectAttributes rttr,
 			List<MultipartFile> files) throws Exception {
 		
-		
-		
 		int bnum = boarduserservice.nextBoardNum();
 		
 		boardUserVO.setBnum(bnum);
 		boardUserVO.setHitCnt(0);
 		
+//		System.out.println("1");  ok
+		
 		ServletContext application = request.getServletContext();
 		String realPath = application.getRealPath("/resources/upload");
-		log.info("realPath : " + realPath);
+//		System.out.println(realPath);  ok
 		
 		File uploadPath = new File(realPath, getDateFolder());
 		
 		if (!uploadPath.exists()) {
 			uploadPath.mkdirs();
 		}
-
+//		System.out.println("3"); ok
 		List<AttachVO> attachList = new ArrayList<AttachVO>();
 		
 		for (MultipartFile multipartFile : files) {
@@ -88,27 +88,31 @@ public class BoardUserController {
 
 			multipartFile.transferTo(new File(uploadPath, uploadFilename));
 		
+//			System.out.println("4"); ok
+			
 			AttachVO attachVO = new AttachVO();
 			attachVO.setBno(boardUserVO.getBnum());
 			attachVO.setUuid(uuid.toString());
 			attachVO.setUploadpath(getDateFolder());
 			attachVO.setFilename(multipartFile.getOriginalFilename());		
-		
+//			System.out.println("5"); ok
+//			System.out.println(multipartFile.getOriginalFilename()); ok
+//			System.out.println(isImageType(originalFilename)); true
 			if (isImageType(originalFilename)) {
 				attachVO.setFiletype("I");			
-			
-				File thumbnailFile = new File(uploadPath, "s_" + uploadFilename);
-				
-				InputStream is = multipartFile.getInputStream();
-				
-				FileOutputStream fos = new FileOutputStream(thumbnailFile);
-				
-				Thumbnailator.createThumbnail(is, fos, 100, 100);
-				
-				fos.close();
-				
-				
-				
+////				System.out.println("6");
+//				File thumbnailFile = new File(uploadPath, "s_" + uploadFilename);
+////				System.out.println("7");
+//
+//				FileOutputStream fos = new FileOutputStream(thumbnailFile);
+//				InputStream is = multipartFile.getInputStream();
+//				
+//				Thumbnailator.createThumbnail(is, fos, 100, 100);
+//				
+//				fos.close();
+//				
+//				
+//				
 			} else {
 				attachVO.setFiletype("O");
 			}			
