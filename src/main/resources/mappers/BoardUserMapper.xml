@@ -6,7 +6,15 @@
 <mapper namespace="com.project.walk.dao.BoardUserMapper">
 	<insert id="insert">
 		INSERT INTO boarduservo (id, title, content, regdate, hitcnt, likecnt, writer)
-		VALUES(seq_boarduservo.nextval, #{title}, #{content}, sysdate, #{hitcnt}, 1, #{writer})
+		VALUES(seq_boarduservo.nextval, #{title}, #{content}, sysdate, #{hitCnt}, 1, #{writer})
 	</insert>
+	
+	<select id="nextBoardNum" resultType="int">
+		<![CDATA[
+			SELECT NVL(MAX(bnum),0) + 1 AS bnum
+			FROM boarduservo
+		]]>
+	</select>
+	
 	
 </mapper>
