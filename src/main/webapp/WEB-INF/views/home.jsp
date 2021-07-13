@@ -21,6 +21,7 @@
                 		<li><a href="/member/info">회원정보확인</a></li>
                 		<li><a href="/member/modify">회원정보수정</a></li>
                 		<li><a href="/member/remove">회원탈퇴</a></li><br/><br/>
+                		<li><a href="/boarduser/insert">글쓰기</a><li>
                 		
                 		<li><a href="/member/list">회원 목록 보기</a></li>
                 	</c:when>
@@ -29,5 +30,6 @@
                 		<li><a href="/login">로그인</a></li>
                 	</c:otherwise>
                 </c:choose>
+    <li><a href="/boarduser/list">게시판</a></li>
 </body>
 </html>

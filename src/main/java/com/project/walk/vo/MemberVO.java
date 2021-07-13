@@ -12,6 +12,6 @@ public class MemberVO {
 	private String email;
 	private String addr;
 	private Date regdate;
-//	private String auth;
+	private String auth;
 	
 }

@@ -5,8 +5,8 @@
   
 <mapper namespace="com.project.walk.dao.BoardUserMapper">
 	<insert id="insert">
-		INSERT INTO table1 (id, password)
-		VALUES(#{id}, #{password})
+		INSERT INTO boarduservo (id, title, content, regdate, hitcnt, likecnt, writer)
+		VALUES(seq_boarduservo.nextval, #{title}, #{content}, sysdate, #{hitcnt}, 1, #{writer})
 	</insert>
 	
 </mapper>

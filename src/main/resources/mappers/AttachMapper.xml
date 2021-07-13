@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.project.walk.dao.AttachMapper">
+	<insert id="insertAttach">
+		INSERT INTO attachvo (uuid, uploadpath, dfilename, filetype, bno)
+		VALUES(#{uuid}, #{uploadpath}, #{filename}, #{filetype}, #{bno})
+	</insert>
+	
+	<select id="getAttachesByBno" resultType="AttachVO">
+		<![CDATA[
+			SELECT *
+			FROM attachvo
+			WHERE bno = #{bno}
+		]]>
+	</select>
+	
+</mapper>
