@@ -17,27 +17,27 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.project.walk.service.BoardLikeService;
 import com.project.walk.service.BoardUserService;
-import com.project.walk.service.MemberService;
 import com.project.walk.vo.AttachVO;
+import com.project.walk.vo.BoardLike;
 import com.project.walk.vo.BoardUserVO;
-import com.project.walk.vo.MemberVO;
-
-import lombok.extern.java.Log;
 
 @Controller
 @RequestMapping("/boarduser/*")
-@Log
+
 public class BoardUserController {
 	@Autowired
 	private BoardUserService boarduserservice;
 	
 	@Autowired
-	private MemberService memberService;
+	private BoardLikeService boardlikeservice;
 	
 	//
 	@GetMapping("/list")
@@ -164,6 +164,17 @@ public class BoardUserController {
 			
 			return result;
 		}
+	
+	@PostMapping("like/{bnum}")
+	@ResponseBody
+	public String like(@PathVariable int bnum, 
+			@RequestBody BoardLike bl) {
+		System.out.println("받아온 데이터는?"+bl.getB_id()+bl.getM_id());
 		
+
+		boardlikeservice.addLike(bl);
+		
+		return "success";
+	}
 	
 }
