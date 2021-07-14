@@ -6,7 +6,7 @@
 <mapper namespace="com.project.walk.dao.BoardUserMapper">
 	<insert id="insert">
 		INSERT INTO boarduservo (id, title, content, regdate, hitcnt, likecnt, writer, bnum)
-		VALUES(seq_boarduservo.nextval, #{title}, #{content}, sysdate, #{hitCnt}, 1, #{writer}, #{bnum})
+		VALUES(seq_boarduservo.nextval, #{title}, #{content}, sysdate, #{hitCnt}, 0, #{writer}, #{bnum})
 	</insert>
 	
 	<select id="nextBoardNum" resultType="int">
@@ -16,5 +16,18 @@
 		]]>
 	</select>
 	
+		<!-- 유저 게시글  -->
+	<select id="list" resultType="BoardUserVO" >
+		<![CDATA[
+		SELECT * FROM boarduservo ORDER BY id DESC
+		]]>
+	</select>
+	
+	<!-- 유저 게시글 상세보기 -->
+	<select id="detail" resultType="BoardUserVO">
+		<![CDATA[
+		SELECT * FROM boarduservo WHERE id=#{id}
+		]]>
+	</select>
 	
 </mapper>

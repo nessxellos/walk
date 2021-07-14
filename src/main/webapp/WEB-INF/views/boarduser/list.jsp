@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt"%>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,23 +17,21 @@
 <body>
 <div class="container mt-3">
   <h2>유저 게시판</h2>
-  <p>Combine .badge classes with utility/helper classes to add badges inside the list group:</p>
+  <p>오신걸 환영합니다.</p>
+  <c:forEach items="${ lists }" var="boarduservo">
   <ul class="list-group">
     <li class="list-group-item d-flex justify-content-between align-items-center">
-      Inbox
-      <span class="badge badge-primary badge-pill">12</span>
+      <a href="/boarduser/detail/${boarduservo.bnum }">제목 : ${ boarduservo.title }</a>
+      <span class="badge badge-primary badge-pill">조회수 :</span>
     </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      Ads
-      <span class="badge badge-primary badge-pill">50</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      Junk
-      <span class="badge badge-primary badge-pill">99</span>
-    </li>
+    
   </ul>
+  <br>
+  </c:forEach>
 </div>
 <br><br>
-<center><a href="insert">글쓰기</a></center>
+<a href="insert">글쓰기</a>
+
+
 </body>
 </html>

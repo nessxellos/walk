@@ -1,8 +1,7 @@
 package com.project.walk.controller;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,7 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,7 +28,6 @@ import com.project.walk.vo.BoardUserVO;
 import com.project.walk.vo.MemberVO;
 
 import lombok.extern.java.Log;
-import net.coobird.thumbnailator.Thumbnailator;
 
 @Controller
 @RequestMapping("/boarduser/*")
@@ -40,9 +40,19 @@ public class BoardUserController {
 	private MemberService memberService;
 	
 	//
-	@GetMapping("list")
-	public String list() {
-		return "/boarduser/list";
+	@GetMapping("/list")
+	public List<BoardUserVO> list(Model model) {
+		model.addAttribute("lists", boarduserservice.list());
+
+		return boarduserservice.list();
+	}
+	
+	// 게시글 상세보기
+	@GetMapping("detail/{id}")
+	public String detail(@PathVariable int id, Model model) {
+		BoardUserVO boarduser = boarduserservice.detail(id);
+		model.addAttribute("boarduser", boarduser);
+		return "boarduser/detail";
 	}
 	
 	// 글쓰기 폼
@@ -55,8 +65,8 @@ public class BoardUserController {
 	@PostMapping("insert")
 	public String insert(BoardUserVO boardUserVO, String pageNum, 
 			HttpServletRequest request, RedirectAttributes rttr,
-			List<MultipartFile> files) throws Exception {
-		
+			List<MultipartFile> files, Model model) throws Exception {
+				
 		int bnum = boarduserservice.nextBoardNum();
 		
 		boardUserVO.setBnum(bnum);
@@ -121,8 +131,8 @@ public class BoardUserController {
 		
 		boarduserservice.insertBoardAndAttaches(boardUserVO, attachList);
 
-		rttr.addAttribute("num", boardUserVO.getBnum());
-		rttr.addAttribute("pageNum", pageNum);
+//		rttr.addAttribute("num", boardUserVO.getBnum());
+//		rttr.addAttribute("pageNum", pageNum);
 		
 		return "redirect:/boarduser/list";
 	}
@@ -155,6 +165,5 @@ public class BoardUserController {
 			return result;
 		}
 		
-	
 	
 }

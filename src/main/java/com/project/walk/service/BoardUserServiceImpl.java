@@ -20,19 +20,17 @@ public class BoardUserServiceImpl implements BoardUserService {
 	
 	@Override
 	public List<BoardUserVO> list() {
-		// TODO Auto-generated method stub
-		return null;
+		return boarduserMapper.list();
 	}
 
 	@Override
 	public void insert(BoardUserVO boardUserVO) {
-		
+		boarduserMapper.insert(boardUserVO);
 	}
 
 	@Override
 	public BoardUserVO detail(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return boarduserMapper.detail(id);
 	}
 
 	@Override
