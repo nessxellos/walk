@@ -1,6 +1,5 @@
 package com.project.walk.controller;
 
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,12 +10,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.walk.service.MemberService;
 import com.project.walk.util.Script;
@@ -57,6 +54,22 @@ public class MemberController {
 		MemberVO member = memberservice.detail(id);
 		model.addAttribute("member", member);
 		return "member/detail";
+	}
+	
+	//수정폼
+	@GetMapping("update/{id}")
+	public String update(Model model, @PathVariable int id) {
+		MemberVO memberVO = memberservice.detail(id);
+		model.addAttribute("memberVO", memberVO);
+		return "member/update";
+	}
+	
+	//수정하기
+	@PostMapping("update")
+	public String update(MemberVO memberVO) {
+		//테이블에 회원정보 수정 처리
+		memberservice.update(memberVO);
+		return "redirect:/member/detail/"+memberVO.getId();
 	}
 
 }

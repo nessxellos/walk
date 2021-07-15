@@ -4,19 +4,19 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.project.walk.vo.CommentVO;
+import com.project.walk.vo.CommentUserVO;
 
 @Service
-public class CommentServiceImpl implements CommentService {
+public class CommentAdminServiceImpl implements CommentAdminService{
 
 	@Override
-	public List<CommentVO> list() {
+	public List<CommentUserVO> list() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void insert(CommentVO commentVO) {
+	public void insert(CommentUserVO commentVO) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -26,7 +26,5 @@ public class CommentServiceImpl implements CommentService {
 		// TODO Auto-generated method stub
 		
 	}
-	
-
 
 }

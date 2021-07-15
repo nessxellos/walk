@@ -5,8 +5,8 @@
   
 <mapper namespace="com.project.walk.dao.BoardUserMapper">
 	<insert id="insert">
-		INSERT INTO boarduservo (id, title, content, regdate, hitcnt, likecnt, writer, bnum)
-		VALUES(seq_boarduservo.nextval, #{title}, #{content}, sysdate, #{hitCnt}, 0, #{writer}, #{bnum})
+		INSERT INTO boarduservo (id, title, content, regdate, hitcnt, likecnt, writer, bnum, membervo_id)
+		VALUES(seq_boarduservo.nextval, #{title}, #{content}, sysdate, #{hitCnt}, 0, #{writer}, #{bnum}, #{membervo_id})
 	</insert>
 	
 	<select id="nextBoardNum" resultType="int">
@@ -28,6 +28,10 @@
 		<![CDATA[
 		SELECT * FROM boarduservo WHERE id=#{id}
 		]]>
+	</select>
+	
+	<select id="update">
+		UPDATE boarduservo SET title = #{title}, content = #{content} WHERE bnum = #{bnum}
 	</select>
 	
 </mapper>

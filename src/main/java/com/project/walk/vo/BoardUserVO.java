@@ -17,5 +17,7 @@ public class BoardUserVO {
 	private Date regDate;
 	private int hitCnt;
 	private int likeCnt;
+	private int membervo_id;
+
 //	private double location;
 }
