@@ -57,6 +57,12 @@ public class BoardUserController {
 	public String detail(@PathVariable int id, Model model) {
 		BoardUserVO boarduser = boarduserservice.detail(id);
 		model.addAttribute("boarduser", boarduser);
+		
+		int b_id = boardlikeservice.totLike(boarduser.getBnum());
+		BoardLike bl = new BoardLike();
+		bl.setCntlike(b_id);
+		model.addAttribute("bl", bl);
+		
 		return "boarduser/detail";
 	}
 
@@ -181,8 +187,8 @@ public class BoardUserController {
 	// 댓글 추가
 	@PostMapping("commentInsert")
 	@ResponseBody
-	public String insert(@RequestBody CommentUserVO CommentUserVO) {
-		commentuserservice.insert(CommentUserVO);
+	public String insert(@RequestBody CommentUserVO commentUserVO) {
+		commentuserservice.insert(commentUserVO);
 		return "success";
 	}
 
@@ -209,7 +215,10 @@ public class BoardUserController {
 
 		boardlikeservice.addLike(bl);
 
-		return "success";
+		return "redirect:/boarduser/detail";
 	}
+	
+	// 좋아요 갯수
+	
 
 }

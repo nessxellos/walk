@@ -9,7 +9,7 @@ public interface BoardLikeMapper {
 	
 	public void addLike(BoardLike boardLike);
 	
-	public void totLike();
+	public int totLike(int b_id);
 	
 	public void subLike();
 	

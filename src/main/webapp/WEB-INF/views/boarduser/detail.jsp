@@ -18,9 +18,11 @@
 </head>
 <body>
 	<div class="container">
+	<form  >
 		<br />
 		<h2>게시글 상세보기</h2>
 		<input type="hidden" id="username" name="username" value="${memberVO.username }">
+		
 		<br />
 		<div class="form-group">
 			<label for="title">게시글 번호:</label> <input type="text"
@@ -44,14 +46,13 @@
 		</div>
 		<c:choose>
 			<c:when test="${ not empty memberVO }">
-			<input type="button" value="좋아요" class="btn btn-secondary  btn-sm" id="likeit" name="likeit">
+			<p>추천수 :${ bl.cntlike }</p><input type="button" value="좋아요" class="btn btn-secondary  btn-sm" id="likeit" name="likeit">
 			</c:when>
 		</c:choose>
-		<button type="button" id="btnUpdate" class="btn btn-primary btn-sm"><a href="/boarduser/list">목록으로 가기</a></button>
 		
 		<button type="button" id="btnUpdate" class="btn btn-primary  btn-sm">수정</button>
 		<button type="button" id="btnDelete" class="btn btn-danger  btn-sm">삭제</button>
-
+	</form>
 	</div>
 	<br />
 	<br />
@@ -91,8 +92,9 @@
 				alert("댓글을 입력하세요!");
 				return;
 			}
+			String data = "";
 			data = {
-				"bnum" : $("#num").val(),
+				"boarduservo_id" :d}, ${boarduser.i
 				"content" : $("#msg").val()
 			}
 			$.ajax({
@@ -107,11 +109,7 @@
 				alert("댓글 추가 실패")
 			})
 		})
-		$("#btnUpdate").click(function() {
-			if (!confirm('정말 수정할까요?'))
-				return false;
-			location.href = "/update/${board.num}"
-		})
+
 		$("#btnDelete").click(function() {
 			if (!confirm('정말 삭제할까요?'))
 				return false;
@@ -140,6 +138,26 @@
 			})
 		} // fdel
 		init();
+$("#likeit").click(function(){
+			
+			data = {
+					"b_id" : $("#id").val(),
+					"m_id" : $("#username").val()
+			}
+			$.ajax({
+				type:"POST",
+				url:"/boarduser/like/"+$("#id").val(),
+		 		contentType:"application/json;charset=utf-8",
+				data:JSON.stringify(data)
+		 	})
+			.done(function(){
+				alert("좋아요 성공");
+				location.href = "/boarduser/detail/"+${boarduser.id};
+			})
+			.fail(function(){
+				alert("좋아요 실패")
+			})
+		})
 </script>
 </body>
 </html>

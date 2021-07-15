@@ -18,9 +18,8 @@ public class BoardLikeServiceImpl implements BoardLikeService {
 	}
 
 	@Override
-	public void totLike() {
-		// TODO Auto-generated method stub
-		
+	public int totLike(int b_id) {
+		return boardLikeMapper.totLike(b_id);
 	}
 
 	@Override
