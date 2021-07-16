@@ -36,6 +36,7 @@ public class BoardUserServiceImpl implements BoardUserService {
 	@Override
 	public void update(BoardUserVO boardUserVO) {
 		// TODO Auto-generated method stub
+		boarduserMapper.update(boardUserVO);
 		
 	}
 

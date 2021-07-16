@@ -31,7 +31,9 @@
 	</select>
 	
 	<select id="update">
-		UPDATE boarduservo SET title = #{title}, content = #{content} WHERE bnum = #{bnum}
+		UPDATE boarduservo 
+		SET title = #{title}, content = #{content} 
+		WHERE bnum = #{bnum}
 	</select>
 	
 </mapper>

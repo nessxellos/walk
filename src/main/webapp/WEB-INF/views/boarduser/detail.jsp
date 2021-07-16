@@ -63,81 +63,90 @@
 	<hr />
 	<div id="replyResult"></div>
 	<script>
-		var init = function() {
-			$.ajax({
-				type : "get",
-				url : "/boarduser/commentList",
-				data : {
-					"bnum" : $("#num").val()
-				}
-			}).done(
-					function(resp) {
-						//alert(resp)
-						var str = "";
-						$.each(resp, function(key, val) {
-							str += val.userid + " "
-							str += val.content + " "
-							str += val.regdate + " "
-							str += "<a href='javascript:fdel(" + val.cnum
-									+ ")'>삭제</a><br>"
-						})
-						$("#replyResult").html(str);
-					}).fail(function(e) {
-				alret("실패")
-			})
-		}
-		// 댓글쓰기
-		$("#btnComment").click(function() {
-			if ($("#msg").val() == "") {
-				alert("댓글을 입력하세요!");
-				return;
+	var init = function() {
+		$.ajax({
+			type : "get",
+			url : "/reply/commentList",
+			data : {
+				"boarduservo_id" : ${boarduser.id}
 			}
-			String data = "";
-			data = {
-				"boarduservo_id" :d}, ${boarduser.i
-				"content" : $("#msg").val()
-			}
-			$.ajax({
-				type : "post",
-				url : "/boarduser/commentInsert",
-				contentType : "application/json;charset=utf-8",
-				data : JSON.stringify(data)
-			}).done(function() {
-				alert("댓글 추가 성공")
-				init()
-			}).fail(function() {
-				alert("댓글 추가 실패")
-			})
+		}).done(
+				function(resp) {
+					//alert(resp.length)
+					
+					var str ="";
+					$.each(resp, function(key, val){
+						str += val.id+" "
+						str += val.content+" "
+						str += val.regdate+" "
+						str +="<a href='javascript:fdel(" + val.cnum + ")'>삭제</a><br>"
+						
+					})
+					
+					$("#replyResult").html(str);
+				}).fail(function(e) {
+			alret("실패")
 		})
-
-		$("#btnDelete").click(function() {
-			if (!confirm('정말 삭제할까요?'))
-				return false;
-			$.ajax({
-				type : "delete",
-				url : "/delete/${board.num}",
-				success : function(resp) {
-					if (resp == "success") {
-						alert("삭제성공");
-						location.href = "/list";
-					}//if
-				}//success
-			})//ajax
-		}) //btnDelete
-		/* 댓글 삭제  */
-		function fdel(cnum) {
-			//alert(cnum)
-			$.ajax({
-				type : "DELETE",
-				url : "/boarduser/delete/" + cnum
-			}).done(function(resp) {
-				alert(resp + "번 글 삭제 완료")
-				init()
-			}).fail(function(e) {
-				alert("댓글 삭제 실패")
-			})
-		} // fdel
-		init();
+	}
+	// 댓글쓰기
+	$("#btnComment").click(function() {
+		if ($("#msg").val() == "") {
+			alert("댓글을 입력하세요!");
+			return;
+		}
+		data = {
+			"boarduservo_id" : ${boarduser.id},
+			"content" : $("#msg").val()
+		}
+		$.ajax({
+			type : "post",
+			url : "/reply/commentInsert",
+			contentType : "application/json;charset=utf-8",
+			data : JSON.stringify(data)
+		}).done(function() {
+			alert("댓글 추가 성공")
+			init()
+		}).fail(function() {
+			alert("댓글 추가 실패")
+		})
+	})
+	
+	
+	
+	$("#btnUpdate").click(function() {
+		if (!confirm('정말 수정할까요?'))
+			return false;
+		location.href = "/update/${board.num}"
+	})
+	$("#btnDelete").click(function() {
+		if (!confirm('정말 삭제할까요?'))
+			return false;
+		$.ajax({
+			type : "delete",
+			url : "/delete/${board.num}",
+			success : function(resp) {
+				if (resp == "success") {
+					alert("삭제성공");
+					location.href = "/list";
+				}//if
+			}//success
+		})//ajax
+	}) //btnDelete
+	/* 댓글 삭제  */
+	function fdel(cnum) {
+		//alert(cnum)
+		$.ajax({
+			type : "DELETE",
+			url : "/boarduser/delete/" + cnum
+		}).done(function(resp) {
+			alert(resp + "번 글 삭제 완료")
+			init()
+		}).fail(function(e) {
+			alert("댓글 삭제 실패")
+		})
+	} // fdel
+	init();
+// 좋아요
 $("#likeit").click(function(){
 			
 			data = {

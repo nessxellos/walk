@@ -16,14 +16,14 @@
 		]]>
 	</select>
 	
-	<!-- 유저 게시글  -->
+	<!-- 관리자 게시글  -->
 	<select id="list" resultType="BoardAdminVO" >
 		<![CDATA[
 		SELECT * FROM boardadminvo ORDER BY id DESC
 		]]>
 	</select>
 	
-	<!-- 유저 게시글 상세보기 -->
+	<!-- 관리자 게시글 상세보기 -->
 	<select id="detail" resultType="BoardAdminVO">
 		<![CDATA[
 		SELECT * FROM boardadminvo WHERE id=#{id}
@@ -31,7 +31,8 @@
 	</select>
 	
 	<select id="update">
-		UPDATE boardadminvo SET title = #{title}, content =
-		#{content} WHERE bnum = #{bnum}
+		UPDATE boardadminvo 
+		SET title = #{title}, content = #{content} 
+		WHERE bnum = #{bnum}
 	</select>
 </mapper>

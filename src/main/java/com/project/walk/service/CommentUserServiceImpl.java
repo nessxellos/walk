@@ -16,8 +16,8 @@ public class CommentUserServiceImpl implements CommentUserService {
 	
 	
 	@Override
-	public List<CommentUserVO> list(int bnum) {
-		return commentusermapper.list(bnum);
+	public List<CommentUserVO> list(int boarduservo_id) {
+		return commentusermapper.list(boarduservo_id);
 	}
 
 	@Override

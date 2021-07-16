@@ -24,10 +24,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.project.walk.service.BoardAdminService;
 import com.project.walk.vo.AttachVO;
 import com.project.walk.vo.BoardAdminVO;
-import com.project.walk.vo.BoardUserVO;
 
 import lombok.extern.java.Log;
-import net.coobird.thumbnailator.Thumbnailator;
 
 @Controller
 @RequestMapping("/boardadmin/*")
@@ -45,11 +43,11 @@ public class BoardAdminController {
 	}
 
 	// 게시글 상세보기
-	@GetMapping("detail/{id}")
-	public String detail(@PathVariable int id, Model model) {
-		BoardAdminVO boardadmin = boardadminservice.detail(id);
+	@GetMapping("detail/{bnum}")
+	public String detail(@PathVariable int bnum, Model model) {
+		BoardAdminVO boardadmin = boardadminservice.detail(bnum);
 		model.addAttribute("boardadmin", boardadmin);
-		return "boarduser/detail";
+		return "boardadmin/detail";
 	}
 
 	// 글쓰기 폼
@@ -98,22 +96,11 @@ public class BoardAdminController {
 			attachVO.setUploadpath(getDateFolder());
 			attachVO.setFilename(multipartFile.getOriginalFilename());
 
-//			if (isImageType(originalFilename)) {
-//				attachVO.setFiletype("I");
-//
-//				File thumbnailFile = new File(uploadPath, "s_" + uploadFilename);
-//
-//				InputStream is = multipartFile.getInputStream();
-//
-//				FileOutputStream fos = new FileOutputStream(thumbnailFile);
-//
-//				Thumbnailator.createThumbnail(is, fos, 100, 100);
-//
-//				fos.close();
-//
-//			} else {
-//				attachVO.setFiletype("O");
-//			}
+			if (isImageType(originalFilename)) {
+				attachVO.setFiletype("I");
+			} else {
+				attachVO.setFiletype("O");
+			}
 			attachList.add(attachVO);
 		}
 
@@ -148,9 +135,9 @@ public class BoardAdminController {
 	}
 	
 	// 수정 폼
-	@GetMapping("update/{bnum}")
-	public String update(Model model, @PathVariable int bnum) {
-		BoardAdminVO boardadminvo = boardadminservice.detail(bnum);
+	@GetMapping("update/{id}")
+	public String update(Model model, @PathVariable int id) {
+		BoardAdminVO boardadminvo = boardadminservice.detail(id);
 		model.addAttribute("boardadminvo", boardadminvo);
 		return "boarduser/update";
 	}
@@ -159,7 +146,7 @@ public class BoardAdminController {
 	@PostMapping("update") 
 	public String update(BoardAdminVO boardadminvo) {
 		boardadminservice.update(boardadminvo);
-		return "boarduser/list";
+		return "redirect:list";
 	}
 
 	

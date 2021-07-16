@@ -30,7 +30,6 @@ import com.project.walk.service.CommentUserService;
 import com.project.walk.vo.AttachVO;
 import com.project.walk.vo.BoardLike;
 import com.project.walk.vo.BoardUserVO;
-import com.project.walk.vo.CommentUserVO;
 
 @Controller
 @RequestMapping("/boarduser/*")
@@ -82,18 +81,14 @@ public class BoardUserController {
 		boardUserVO.setBnum(bnum);
 		boardUserVO.setHitCnt(0);
 
-//		System.out.println("1");  ok
-
 		ServletContext application = request.getServletContext();
 		String realPath = application.getRealPath("/resources/upload");
-//		System.out.println(realPath);  ok
 
 		File uploadPath = new File(realPath, getDateFolder());
 
 		if (!uploadPath.exists()) {
 			uploadPath.mkdirs();
 		}
-//		System.out.println("3"); ok
 		List<AttachVO> attachList = new ArrayList<AttachVO>();
 
 		for (MultipartFile multipartFile : files) {
@@ -108,31 +103,13 @@ public class BoardUserController {
 
 			multipartFile.transferTo(new File(uploadPath, uploadFilename));
 
-//			System.out.println("4"); ok
-
 			AttachVO attachVO = new AttachVO();
 			attachVO.setBno(boardUserVO.getBnum());
 			attachVO.setUuid(uuid.toString());
 			attachVO.setUploadpath(getDateFolder());
 			attachVO.setFilename(multipartFile.getOriginalFilename());
-//			System.out.println("5"); ok
-//			System.out.println(multipartFile.getOriginalFilename()); ok
-//			System.out.println(isImageType(originalFilename)); true
 			if (isImageType(originalFilename)) {
 				attachVO.setFiletype("I");
-////				System.out.println("6");
-//				File thumbnailFile = new File(uploadPath, "s_" + uploadFilename);
-////				System.out.println("7");
-//
-//				FileOutputStream fos = new FileOutputStream(thumbnailFile);
-//				InputStream is = multipartFile.getInputStream();
-//				
-//				Thumbnailator.createThumbnail(is, fos, 100, 100);
-//				
-//				fos.close();
-//				
-//				
-//				
 			} else {
 				attachVO.setFiletype("O");
 			}
@@ -170,9 +147,9 @@ public class BoardUserController {
 	}
 	
 	// 수정 폼
-	@GetMapping("update/{bnum}")
-	public String update(Model model, @PathVariable int bnum) {
-		BoardUserVO boarduser = boarduserservice.detail(bnum);
+	@GetMapping("update/{id}")
+	public String update(Model model, @PathVariable int id) {
+		BoardUserVO boarduser = boarduserservice.detail(id);
 		model.addAttribute("boarduser", boarduser);
 		return "boarduser/update";
 	}
@@ -181,22 +158,7 @@ public class BoardUserController {
 	@PostMapping("update") 
 	public String update(BoardUserVO boardUserVO) {
 		boarduserservice.update(boardUserVO);
-		return "boarduser/list";
-	}
-
-	// 댓글 추가
-	@PostMapping("commentInsert")
-	@ResponseBody
-	public String insert(@RequestBody CommentUserVO commentUserVO) {
-		commentuserservice.insert(commentUserVO);
-		return "success";
-	}
-
-	// 댓글리스트
-	@GetMapping("commentList")
-	public List<CommentUserVO> list(int bnum) {
-		List<CommentUserVO> clist = commentuserservice.list(bnum);
-		return clist;
+		return "redirect:list";
 	}
 
 	// 댓글 삭제
@@ -215,7 +177,8 @@ public class BoardUserController {
 
 		boardlikeservice.addLike(bl);
 
-		return "redirect:/boarduser/detail";
+//		return "redirect:/boarduser/detail";
+		return "success";
 	}
 	
 	// 좋아요 갯수

@@ -18,6 +18,6 @@ public interface BoardAdminMapper {
 	void updateHitcount(int num); // 글의 조회수 1 증가시키기
 	
 	public BoardAdminVO detail(int id);//게시글 상세보기
-	public void update(BoardAdminVO boardadminVO);//게시글 수정
+	public String update(BoardAdminVO boardAdminVO);//게시글 수정
 	public void delete(int id);//글 삭제
 }

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt"%>  
+<%@ include file="../includes/header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,8 +21,7 @@
 
 
 <div class="container mt-3">
-  <h2>유저 게시판</h2>
-  <p>오신걸 환영합니다.</p>
+  
   <c:forEach items="${ lists }" var="boarduservo">
   <ul class="list-group">
     <li class="list-group-item d-flex justify-content-between align-items-center">

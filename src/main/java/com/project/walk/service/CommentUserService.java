@@ -6,7 +6,7 @@ import com.project.walk.vo.CommentUserVO;
 
 public interface CommentUserService {
 	
-	public List<CommentUserVO> list(int bnum);// 댓글리스트
+	public List<CommentUserVO> list(int boarduservo_id);// 댓글리스트
 	public void insert(CommentUserVO commentuserVO);// 댓글쓰기
 	public void delete(int id);// 댓글삭제
 }
