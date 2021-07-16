@@ -57,7 +57,7 @@ public class BoardUserController {
 		BoardUserVO boarduser = boarduserservice.detail(id);
 		model.addAttribute("boarduser", boarduser);
 		
-		int b_id = boardlikeservice.totLike(boarduser.getBnum());
+		int b_id = boardlikeservice.totLike(boarduser.getId());
 		BoardLike bl = new BoardLike();
 		bl.setCntlike(b_id);
 		model.addAttribute("bl", bl);
@@ -186,7 +186,12 @@ public class BoardUserController {
 		return "success";
 	}
 	
-	// 좋아요 갯수
-	
+	// 추천게시판
+	@GetMapping("best")
+	public List<BoardUserVO> bestList(Model model) {
+		model.addAttribute("b_lists", boarduserservice.bestList());
+
+		return boarduserservice.bestList();
+	}
 
 }

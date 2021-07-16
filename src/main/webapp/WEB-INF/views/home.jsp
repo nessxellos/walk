@@ -403,6 +403,7 @@
 	이메일은 ${memberVO.email } 입니다?
 
     <li><a href="/boarduser/list">게시판</a></li>
+    <li><a href="/boarduser/best">베스트 게시판</a></li>
     
 </body>
 </html>

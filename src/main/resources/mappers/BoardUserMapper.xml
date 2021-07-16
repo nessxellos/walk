@@ -6,7 +6,7 @@
 <mapper namespace="com.project.walk.dao.BoardUserMapper">
 	<insert id="insert">
 		INSERT INTO boarduservo (id, title, content, regdate, hitcnt, likecnt, writer, bnum, membervo_id)
-		VALUES(seq_boarduservo.nextval, #{title}, #{content}, sysdate, #{hitCnt}, 0, #{writer}, #{bnum}, #{membervo_id})
+		VALUES(seq_boarduservo.nextval, #{title}, #{content}, sysdate, #{hitCnt}, #{likeCnt}, #{writer}, #{bnum}, #{membervo_id})
 	</insert>
 	
 	<select id="nextBoardNum" resultType="int">
@@ -40,6 +40,15 @@
 		UPDATE boarduservo
 		SET hitcnt = hitcnt+1
 		WHERE id = #{id}
+	</select>
+	
+	<select id="bestList" resultType="BoardUserVO">
+		<![CDATA[
+			SELECT * 
+			FROM boarduservo, (SELECT b_id, COUNT(*) as cntlike FROM boardlike 
+							   GROUP BY b_id ORDER BY cntlike DESC) bestcnt 
+			WHERE id = bestcnt.b_id AND ROWNUM <=2
+		]]>
 	</select>
 	
 </mapper>

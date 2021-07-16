@@ -22,6 +22,11 @@ public class BoardUserServiceImpl implements BoardUserService {
 	public List<BoardUserVO> list() {
 		return boarduserMapper.list();
 	}
+	
+	@Override
+	public List<BoardUserVO> bestList() {
+		return boarduserMapper.bestList();
+	}
 
 	@Override
 	public void insert(BoardUserVO boardUserVO) {
@@ -73,7 +78,6 @@ public class BoardUserServiceImpl implements BoardUserService {
 			}
 		}
 	}
-	
 
 
 }

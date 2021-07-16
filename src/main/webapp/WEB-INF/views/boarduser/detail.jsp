@@ -134,7 +134,7 @@
 		})//ajax
 	}) //btnDelete
 	/* 댓글 삭제  */
-	function fdel(id) {
+/* 	function fdel(id) {
 		//alert(cnum)
 		if (!confirm('정말 삭제할까요?'))
 			return false;
@@ -152,12 +152,12 @@
 			alert("댓글 삭제 실패")
 		})
 	} // fdel
-	init();
+	init(); */
 // 좋아요
 $("#likeit").click(function(){
 			
 			data = {
-					"b_id" : $("#id").val(),
+					"b_id" : ${boarduser.id},
 					"m_id" : $("#username").val()
 			}
 			$.ajax({

@@ -7,6 +7,7 @@ import com.project.walk.vo.BoardUserVO;
 public interface BoardUserService {
 	
 	public List<BoardUserVO> list();//게시글 리스트 보기
+	public List<BoardUserVO> bestList(); // 베스트 글
 	public void insert(BoardUserVO boardUserVO);//게시글 쓰기
 	public void insertBoardAndAttaches(BoardUserVO boarduserVO, List<AttachVO> attachList);
 	
