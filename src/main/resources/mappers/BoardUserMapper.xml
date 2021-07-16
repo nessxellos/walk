@@ -36,4 +36,10 @@
 		WHERE bnum = #{bnum}
 	</select>
 	
+	<select id="updateHitcount">
+		UPDATE boarduservo
+		SET hitcnt = hitcnt+1
+		WHERE id = #{id}
+	</select>
+	
 </mapper>

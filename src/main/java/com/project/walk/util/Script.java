@@ -19,6 +19,14 @@ public class Script {
 		sb.append("</script>");
 		return sb.toString();
 	}
+	
+	public static String ok(String message) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("<script>");
+		sb.append("alert('" + message + "');");
+		sb.append("</script>");
+		return sb.toString();
+	}
 }
 
 

@@ -30,6 +30,7 @@ public class BoardUserServiceImpl implements BoardUserService {
 
 	@Override
 	public BoardUserVO detail(int id) {
+		boarduserMapper.updateHitcount(id);
 		return boarduserMapper.detail(id);
 	}
 

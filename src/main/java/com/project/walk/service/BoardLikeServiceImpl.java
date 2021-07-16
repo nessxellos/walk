@@ -23,8 +23,14 @@ public class BoardLikeServiceImpl implements BoardLikeService {
 	}
 
 	@Override
-	public void subLike() {
-		// TODO Auto-generated method stub
+	public int alreadyLike(BoardLike boardLike) {
+		return boardLikeMapper.alreadyLike(boardLike);
+		
+	}
+
+	@Override
+	public void subLike(BoardLike boardLike) {
+		boardLikeMapper.subLike(boardLike);
 		
 	}
 

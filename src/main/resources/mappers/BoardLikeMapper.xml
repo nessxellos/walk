@@ -12,9 +12,22 @@
 	
 	<!-- 좋아요 갯수 -->
 	<select id="totLike" resultType="int">
-		SELECT COUNT(*) FROM boardlike
+		SELECT COUNT(*) 
+		FROM boardlike
 		WHERE b_id=#{b_id}
 	</select>
 	
+	<!-- 좋아요 여부 확인 -->
+	<select id="alreadyLike" resultType="int">
+		SELECT COUNT(*) 
+    	FROM boardlike
+    	WHERE b_id=#{b_id} AND m_id=#{m_id}
+	</select>
+	
+	<!-- 좋아요 취소 -->
+	<delete id="subLike">
+		DELETE FROM boardlike
+		WHERE b_id=#{b_id} AND m_id=#{m_id}
+	</delete>
 	
 </mapper>

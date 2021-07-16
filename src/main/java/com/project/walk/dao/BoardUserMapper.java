@@ -14,7 +14,7 @@ public interface BoardUserMapper {
 	
 	int getTotalCount(); // 전체 글개수 가져오기
 	int nextBoardNum(); // 다음 insert할 글번호 생성하기
-	void updateHitcount(int num); // 글의 조회수 1 증가시키기
+	void updateHitcount(int id); // 글의 조회수 1 증가시키기
 	
 	public BoardUserVO detail(int id);//게시글 상세보기
 	public void update(BoardUserVO boardUserVO);//게시글 수정

@@ -44,6 +44,7 @@
 				class="form-control" id="email" name="email"
 				value="${boarduser.content}" readonly="readonly">
 		</div>
+			<p>조회수 : ${boarduser.hitCnt}</p>
 		<c:choose>
 			<c:when test="${ not empty memberVO }">
 			<p>추천수 :${ bl.cntlike }</p><input type="button" value="좋아요" class="btn btn-secondary  btn-sm" id="likeit" name="likeit">
@@ -79,7 +80,7 @@
 						str += val.id+" "
 						str += val.content+" "
 						str += val.regdate+" "
-						str +="<a href='javascript:fdel(" + val.cnum + ")'>삭제</a><br>"
+						str +="<a href='javascript:fdel(" + val.id + ")'>삭제</a><br>"
 						
 					})
 					
@@ -133,11 +134,17 @@
 		})//ajax
 	}) //btnDelete
 	/* 댓글 삭제  */
-	function fdel(cnum) {
+	function fdel(id) {
 		//alert(cnum)
+		if (!confirm('정말 삭제할까요?'))
+			return false;
+		if (${commentuserVO.writer}!= ${membervo.writer} ) {
+			alert("작성자만 사용할 수 있는 기능입니다.")
+			return false;
+		}
 		$.ajax({
 			type : "DELETE",
-			url : "/boarduser/delete/" + cnum
+			url : "/reply/delete/" + id
 		}).done(function(resp) {
 			alert(resp + "번 글 삭제 완료")
 			init()
@@ -160,11 +167,10 @@ $("#likeit").click(function(){
 				data:JSON.stringify(data)
 		 	})
 			.done(function(){
-				alert("좋아요 성공");
+				alert("'좋아요'가 성공적으로 반영되었습니다.");
 				location.href = "/boarduser/detail/"+${boarduser.id};
 			})
 			.fail(function(){
-				alert("좋아요 실패")
 			})
 		})
 </script>

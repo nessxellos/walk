@@ -173,11 +173,16 @@ public class BoardUserController {
 	@PostMapping("like/{bnum}")
 	@ResponseBody
 	public String like(@PathVariable int bnum, @RequestBody BoardLike bl) {
-		System.out.println("받아온 데이터는?" + bl.getB_id() + bl.getM_id());
+		
+		int isAlreadyLike = boardlikeservice.alreadyLike(bl);
+		
+		if(isAlreadyLike == 0) {
+			boardlikeservice.addLike(bl);
 
-		boardlikeservice.addLike(bl);
-
-//		return "redirect:/boarduser/detail";
+		} else {
+			boardlikeservice.subLike(bl);
+		}
+		
 		return "success";
 	}
 	

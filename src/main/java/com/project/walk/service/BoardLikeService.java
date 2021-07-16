@@ -8,5 +8,7 @@ public interface BoardLikeService {
 	
 	public int totLike(int b_id);
 	
-	public void subLike();
+	public int alreadyLike(BoardLike boardLike);
+	
+	public void subLike(BoardLike boardLike);
 }

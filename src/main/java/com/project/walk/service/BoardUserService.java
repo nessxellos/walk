@@ -18,8 +18,4 @@ public interface BoardUserService {
 	public void update(BoardUserVO boardUserVO);//게시글 수정
 	public void delete(int id);//글 삭제
 	
-
-	
-	
-	
 }
