@@ -1,39 +1,34 @@
-  
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
 <title>유저 정보 보기</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="container">
+	<div>
 		<br />
 		<h2>게시글 상세보기</h2>
 		<br />
-		<div class="form-group">
-			<label for="title">게시글 번호:</label> <input type="text" class="form-control" id="id" name="id" value="${boardadmin.bnum}" readonly="readonly">
+		<div>
+			게시글 번호: <input type="text" id="id" name="id" value="${boardadmin.bnum}" readonly="readonly">
 		</div>
-		<div class="form-group">
-			<label for="title">제목 :</label> <input type="text" class="form-control" id="username" name="username" value="${boardadmin.title}" readonly="readonly">
+		<div>
+			제목 : <input type="text" id="username" name="username" value="${boardadmin.title}" readonly="readonly">
 		</div>
-		<div class="form-group">
-			<label for="writer">작성자:</label> <input type="text" class="form-control" id="regdate" name="regdate" value="${boardadmin.writer}" readonly="readonly">
+		<div>
+			작성자:<input type="text" id="regdate" name="regdate" value="${boardadmin.writer}" readonly="readonly">
 		</div>
-		<div class="form-group">
-			<label for="writer">내용:</label> <input type="text" class="form-control" id="email" name="email" value="${boardadmin.content}" readonly="readonly">
+		<div>
+			내용:<input type="text" id="email" name="email" value="${boardadmin.content}" readonly="readonly">
 		</div>
 
-
-		<button type="button" id="btnUpdate" class="btn btn-primary btn-sm">
+		<button type="button" id="btnUpdate">
 			<a href="/boardadmin/list">확인</a>
 		</button>
-		<button type="button" id="btnUpdate" class="btn btn-primary  btn-sm">수정</button>
-		<button type="button" id="btnDelete" class="btn btn-danger  btn-sm">삭제</button>
+		<button type="button" id="btnUpdate" >수정</button>
+		<button type="button" id="btnDelete" >삭제</button>
 
 	</div>
 	<br />

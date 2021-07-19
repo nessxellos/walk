@@ -70,15 +70,7 @@ var chkAuth = function(){
 	} else if (${memberVO.auth} == 2) {
 
 	}
-/* 	if(${memberVO.auth} == 2) {}
-	else if(${memberVO.auth} != 2) {
-		alert("접근 권한이 없습니다.")
-		location.href = "/";
-	} else{
-		alert("로그인 하세요.")
-		location.href = "/";
-	}
-  */
+
 }
 chkAuth();
 </script>
