@@ -41,15 +41,12 @@ public class BoardUserServiceImpl implements BoardUserService {
 
 	@Override
 	public void update(BoardUserVO boardUserVO) {
-		// TODO Auto-generated method stub
 		boarduserMapper.update(boardUserVO);
-		
 	}
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
-		
+		boarduserMapper.delete(id);
 	}
 
 	@Override

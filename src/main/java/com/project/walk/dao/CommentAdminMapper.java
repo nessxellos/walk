@@ -9,8 +9,8 @@ import com.project.walk.vo.CommentAdminVO;
 @Mapper
 public interface CommentAdminMapper {
 
-	public List<CommentAdminVO> list(int bnum);// 댓글리스트
-	public void insert(CommentAdminVO commentVO);// 댓글쓰기
+	public List<CommentAdminVO> list(int boardadminvo_id);// 댓글리스트
+	public void insert(CommentAdminVO commentadminVO);// 댓글쓰기
 	public void delete(int id);// 댓글삭제
 	
 }

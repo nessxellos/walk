@@ -23,16 +23,11 @@ public class CommentUserServiceImpl implements CommentUserService {
 	@Override
 	public void insert(CommentUserVO commentuserVO) {
 		commentusermapper.insert(commentuserVO);
-		
-		
 	}
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
-		
+		commentusermapper.delete(id);
 	}
 	
-
-
 }

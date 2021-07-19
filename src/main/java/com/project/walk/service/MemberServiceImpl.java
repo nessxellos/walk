@@ -31,14 +31,12 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void update(MemberVO memberVO) {
-		// TODO Auto-generated method stub
-		
+		memberMapper.update(memberVO);		
 	}
 
 	@Override
-	public void delete(int id) {
-		// TODO Auto-generated method stub
-		
+	public void remove(int id) {
+		memberMapper.remove(id);
 	}
 
 	@Override

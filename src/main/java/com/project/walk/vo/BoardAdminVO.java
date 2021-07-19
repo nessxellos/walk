@@ -18,6 +18,5 @@ public class BoardAdminVO {
 	private int hitCnt;
 	private int membervo_id;
 
-//	private double location;
 }
 

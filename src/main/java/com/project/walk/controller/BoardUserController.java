@@ -30,6 +30,7 @@ import com.project.walk.service.CommentUserService;
 import com.project.walk.vo.AttachVO;
 import com.project.walk.vo.BoardLike;
 import com.project.walk.vo.BoardUserVO;
+import com.project.walk.vo.CommentUserVO;
 
 @Controller
 @RequestMapping("/boarduser/*")
@@ -48,8 +49,6 @@ public class BoardUserController {
 	public List<BoardUserVO> list(Model model) {
 		model.addAttribute("lists", boarduserservice.list());
 
-
-		
 		return boarduserservice.list();
 	}
 
@@ -163,13 +162,29 @@ public class BoardUserController {
 		return "redirect:list";
 	}
 
-	// 댓글 삭제
-	@DeleteMapping("delete/{cnum}")
+	// 댓글 추가
+	@PostMapping("commentInsert")
 	@ResponseBody
-	public int delete(@PathVariable int cnum) {
-		commentuserservice.delete(cnum);
-		return cnum;
+	public String insert(@RequestBody CommentUserVO CommentUserVO) {
+		commentuserservice.insert(CommentUserVO);
+		return "success";
 	}
+
+	// 댓글리스트
+	@GetMapping("commentList")
+	public List<CommentUserVO> list(int boarduservo_id) {
+		System.out.println(boarduservo_id);
+		List<CommentUserVO> clist = commentuserservice.list(boarduservo_id);
+		return clist;
+	}
+	
+	// 글 삭제하기
+	 @DeleteMapping("delete/{bnum}")
+	 @ResponseBody
+	 public String delete(@PathVariable int bnum) {
+		 boarduserservice.delete(bnum);
+		 return "success";
+	 }	
 
 	// 좋아요
 	@PostMapping("like/{bnum}")

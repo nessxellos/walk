@@ -21,32 +21,27 @@ public class BoardAdminServiceImpl implements BoardAdminService {
 	
 	@Override
 	public List<BoardAdminVO> list() {
-		// TODO Auto-generated method stub
 		return boardadminMapper.list();
 	}
 
 	@Override
 	public void insert(BoardAdminVO boardAdminVO) {
-		// TODO Auto-generated method stub
 		boardadminMapper.insert(boardAdminVO);
 	}
 
 	@Override
-	public BoardAdminVO detail(int bnum) {
-		// TODO Auto-generated method stub
-		return boardadminMapper.detail(bnum);
+	public BoardAdminVO detail(int id) {
+		return boardadminMapper.detail(id);
 	}
 
 	@Override
 	public String update(BoardAdminVO boardAdminVO) {
-		// TODO Auto-generated method stub
 		return boardadminMapper.update(boardAdminVO);
 	}
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
-		
+		boardadminMapper.delete(id);
 	}
 
 	@Override
@@ -64,19 +59,16 @@ public class BoardAdminServiceImpl implements BoardAdminService {
 
 	@Override
 	public int getTotalCount() {
-		// TODO Auto-generated method stub
 		return boardadminMapper.getTotalCount();
 	}
 
 	@Override
 	public int nextBoardNum() {
-		// TODO Auto-generated method stub
 		return boardadminMapper.nextBoardNum();
 	}
 
 	@Override
 	public void updateHitcount(int num) {
-		// TODO Auto-generated method stub
 		boardadminMapper.updateHitcount(num);
 	}
 

@@ -12,36 +12,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.walk.service.CommentUserService;
-import com.project.walk.vo.CommentUserVO;
+import com.project.walk.service.CommentAdminService;
+import com.project.walk.vo.CommentAdminVO;
 
 @RestController
-@RequestMapping("/reply/*")
-public class CommentUserController {
+@RequestMapping("/replyadmin/*")
+public class CommentAdminController {
 	
 	@Autowired
-	private CommentUserService commentuserservice;
+	private CommentAdminService commentadminservice;
 	
 	//댓글 추가
 	@PostMapping("commentInsert")
 	@ResponseBody
-	public String insert(@RequestBody CommentUserVO commentuserVO) {
-		commentuserservice.insert(commentuserVO);
+	public String insert(@RequestBody CommentAdminVO commentadminVO) {
+		commentadminservice.insert(commentadminVO);
 		return "success";
 	}
 		
 	//댓글리스트
 	@GetMapping("commentList")
-	public List<CommentUserVO> list(int boarduservo_id) {
-		List<CommentUserVO> clist = commentuserservice.list(boarduservo_id);
+	public List<CommentAdminVO> list(int boardadminvo_id) {
+		List<CommentAdminVO> clist = commentadminservice.list(boardadminvo_id);
 		return clist;
 	}
-	
-	// 댓글삭제
+		
+	// 댓글 삭제
 	@DeleteMapping("delete/{id}")
 	@ResponseBody
 	public int delete(@PathVariable int id) {
-		commentuserservice.delete(id);
+		commentadminservice.delete(id);
 		return id;
 	}
+	
 }

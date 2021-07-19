@@ -14,10 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -44,11 +46,11 @@ public class BoardAdminController {
 	}
 
 	// 게시글 상세보기
-	@GetMapping("detail/{bnum}")
-	public String detail(@PathVariable int bnum, Model model) {
-		BoardAdminVO boardadmin = boardadminservice.detail(bnum);
+	@GetMapping("detail/{id}")
+	public String detail(@PathVariable int id, Model model) {
+		BoardAdminVO boardadmin = boardadminservice.detail(id);
 		model.addAttribute("boardadmin", boardadmin);
-		return "boardadmin/detail";
+		return "boarduser/detail";
 	}
 
 	// 글쓰기 폼
@@ -137,19 +139,26 @@ public class BoardAdminController {
 	}
 	
 	// 수정 폼
-	@GetMapping("update/{id}")
-	public String update(Model model, @PathVariable int id) {
-		BoardAdminVO boardadminvo = boardadminservice.detail(id);
+	@GetMapping("update/{bnum}")
+	public String update(Model model, @PathVariable int bnum) {
+		BoardAdminVO boardadminvo = boardadminservice.detail(bnum);
 		model.addAttribute("boardadminvo", boardadminvo);
 		return "boarduser/update";
 	}
 
 	// 수정하기
-	@PostMapping("update") 
+	@PostMapping("update")
 	public String update(BoardAdminVO boardadminvo) {
 		boardadminservice.update(boardadminvo);
-		return "redirect:list";
+		return "boarduser/list";
 	}
 
-	
+	// 삭제하기
+	@DeleteMapping("delete/{bnum}")
+	@ResponseBody
+	public String delete(@PathVariable int bnum) {
+		boardadminservice.delete(bnum);
+		return "success";
+	}
+
 }

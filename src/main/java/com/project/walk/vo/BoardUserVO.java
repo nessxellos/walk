@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 public class BoardUserVO {
-	private int id;  // 글 생성순서?
+	private int id;  // 글 생성순서
 	private int bnum; // 글번호
 	private String title;
 	private String writer;
@@ -19,5 +19,4 @@ public class BoardUserVO {
 	private int likeCnt;
 	private int membervo_id;
 
-//	private double location;
 }

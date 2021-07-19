@@ -16,7 +16,6 @@ public class BoardLikeServiceImpl implements BoardLikeService {
 	public void addLike(BoardLike boardLike) {
 		boardLikeMapper.addLike(boardLike);
 		boardLikeMapper.updateLc(boardLike);
-
 	}
 
 	@Override
@@ -26,22 +25,19 @@ public class BoardLikeServiceImpl implements BoardLikeService {
 
 	@Override
 	public int alreadyLike(BoardLike boardLike) {
-		return boardLikeMapper.alreadyLike(boardLike);
-		
+		return boardLikeMapper.alreadyLike(boardLike);	
 	}
-
+	
 	@Override
 	public void subLike(BoardLike boardLike) {
 		boardLikeMapper.subLike(boardLike);
 		boardLikeMapper.updateLc(boardLike);
-
-		
 	}
-
+	
+	// boardlike 게시판과 boarduser 게시판의 likecnt 동기화
 	@Override
 	public void updateLc(BoardLike boardLike) {
 		boardLikeMapper.updateLc(boardLike);
-		
 	}
 
 }
