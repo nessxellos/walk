@@ -275,9 +275,11 @@
 	<nav>
 		<ul id="topMenu">                
 			<c:choose>
-                <c:when test="${ not empty memberVO }"><br/>               	
+                <c:when test="${ memberVO.auth eq 3 }"><br/>               	
                 	<li class="liStyle"><a href="/member/logout">로그아웃</a></li>
                 	<li class="liStyle"><a href="/boarduser/insert">유저글쓰기</a><li>
+				</c:when>
+				<c:when test="${ memberVO.auth eq 2 }"><br/>               						
                 	<li class="liStyle"><a href="/boardadmin/insert">admin글쓰기</a><li>
                 	<li class="liStyle"><a href="/member/list">회원 목록 보기</a></li>
                 </c:when>
@@ -398,12 +400,15 @@
 <!-- 중앙배경 끝 -->
 
 <script src="js/Slideshow.js"></script>
-
 	
-	이메일은 ${memberVO.email } 입니다?
+	이메일은 ${memberVO.email } 입니다.
+	회원권한은 ${memberVO.auth } 입니다.
+	회원정보보기는 <a href="/member/list">회원 목록 보기</a>
+
 
     <li><a href="/boarduser/list">게시판</a></li>
     <li><a href="/boarduser/best">베스트 게시판</a></li>
-    
+    <li class="liStyle"><a href="/boardadmin/insert">admin글쓰기</a><li>
+	
 </body>
 </html>

@@ -10,6 +10,8 @@ import com.project.walk.vo.MemberVO;
 public interface MemberMapper {
 
 	public void join(MemberVO memberVO); // 회원가입
+	public int idDupChk(MemberVO memberVO); // ID중복체크
+	
 	public MemberVO getMemberById(String username); // 로그인
 	
 	// 멤버 컨트롤러
@@ -20,6 +22,10 @@ public interface MemberMapper {
 	//회원 리스트, 회원 수 
 	public List<MemberVO> list();
 	public int count();
+	
+	public void giveAuth(MemberVO memberVO); // 권한부여
+	public void removeAuth(MemberVO memberVO); // 권한회수
+	public int isManager(MemberVO memberVO); // 권한확인
 	
 	
 	

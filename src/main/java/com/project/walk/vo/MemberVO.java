@@ -12,6 +12,6 @@ public class MemberVO {
 	private String email;
 	private String addr;
 	private Date regdate;
-	private String auth;
+	private int auth;  // 1 관리자 2 매니저 3 일반유저
 	
 }

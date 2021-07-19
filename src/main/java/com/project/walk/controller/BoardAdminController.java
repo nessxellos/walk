@@ -34,6 +34,7 @@ public class BoardAdminController {
 	@Autowired
 	private BoardAdminService boardadminservice;
 
+
 	// 게시글 리스트
 	@GetMapping("/list")
 	public List<BoardAdminVO> list(Model model) {
@@ -52,8 +53,9 @@ public class BoardAdminController {
 
 	// 글쓰기 폼
 	@GetMapping("insert")
-	public String insert() {
-		return "/boarduser/insert";
+	public String insert() {	
+	
+		return "/boardadmin/insert";
 	}
 
 	// 글쓰기

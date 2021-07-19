@@ -14,7 +14,6 @@
 <!-- include summernote-ko-KR -->
 <script src="/resources/js/summernote-ko-KR.js"></script>
 <title>글쓰기</title>
-
 <script>
 	$(document).ready(function() {
 		$('#summernote').summernote({
@@ -29,7 +28,7 @@
 </head>
 <body>
 	<h2 style="text-align: center;">글 작성</h2>
-	<br>
+	<br> 
 	<br>
 	<br>
 
@@ -62,6 +61,26 @@
 			<button type="submit" style="float: right;">회원정보 수정하기</button>
 		</form>
 	</div>
+	
+<script>
+var chkAuth = function(){
+ 	if (${memberVO.auth} != 2) {
+		alert("이용 권한이 없습니다.")
+		location.href = "/";
+	} else if (${memberVO.auth} == 2) {
 
+	}
+/* 	if(${memberVO.auth} == 2) {}
+	else if(${memberVO.auth} != 2) {
+		alert("접근 권한이 없습니다.")
+		location.href = "/";
+	} else{
+		alert("로그인 하세요.")
+		location.href = "/";
+	}
+  */
+}
+chkAuth();
+</script>
 </body>
 </html>

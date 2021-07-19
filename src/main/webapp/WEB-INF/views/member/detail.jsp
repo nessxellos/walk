@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 
 <!DOCTYPE html>
 <html>
@@ -51,6 +53,51 @@
 	</div>
 	<br />
 	<br />
-
+<c:choose>
+    <c:when test="${ member.auth eq 3 }"><br/>    
+		<input type="button" value="매니저 권한 부여" class="btn btn-secondary  btn-sm" id="giveAuth" name="giveAuth">
+	</c:when>
+	<c:when test="${ member.auth eq 2 }"><br/>    
+		<input type="button" value="매니저 권한 회수" class="btn btn-secondary  btn-sm" id="removeAuth" name="removeAuth">
+	</c:when>
+</c:choose>	
+<script>
+$("#giveAuth").click(function(){
+	data = {
+			"id" : $("#id").val(),
+	}
+	$.ajax({
+		type:"POST",
+		url:"/member/giveAuth/"+${member.id},
+ 		contentType:"application/json;charset=utf-8",
+		data:JSON.stringify(data)
+ 	})
+	.done(function(){
+		alert("관리자 권한을 부여했습니다.");
+		location.href = "/member/detail/"+${member.id};
+	})
+	.fail(function(){
+		alert("잘못된 작업입니다.");
+	})
+})
+$("#removeAuth").click(function(){
+	data = {
+			"id" : $("#id").val(),
+	}
+	$.ajax({
+		type:"POST",
+		url:"/member/giveAuth/"+${member.id},
+ 		contentType:"application/json;charset=utf-8",
+		data:JSON.stringify(data)
+ 	})
+	.done(function(){
+		alert("관리자 권한을 회수했습니다.");
+		location.href = "/member/detail/"+${member.id};
+	})
+	.fail(function(){
+		alert("잘못된 작업입니다.");
+	})
+})
+</script>
 </body>
 </html>

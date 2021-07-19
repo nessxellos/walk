@@ -235,8 +235,8 @@ a, a:hover {
 
 <tr>
 <td>Name :  </td>
-<td><input type="text" name="username"><br/></td>
-</tr>
+<td><input type="text" name="username" required="required"><br/>
+</tr> 
 
 <tr>
 <td>Password : </td>

@@ -13,7 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.walk.service.MemberService;
 import com.project.walk.util.Script;
@@ -70,6 +72,23 @@ public class MemberController {
 		//테이블에 회원정보 수정 처리
 		memberservice.update(memberVO);
 		return "redirect:/member/detail/"+memberVO.getId();
+	}
+	
+	//권한 부여
+	@PostMapping("giveAuth/{id}")
+	@ResponseBody
+	public String giveAuth(@PathVariable int id, @RequestBody MemberVO memberVO) {
+		
+		int isManager = memberservice.isManager(memberVO);
+		
+		if(isManager == 3) {
+			memberservice.giveAuth(memberVO);
+			
+		} else if(isManager == 2) {
+			memberservice.removeAuth(memberVO);
+		}
+		
+		return "success";
 	}
 
 }

@@ -51,6 +51,24 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.count();
 	}
 
+	@Override
+	public void giveAuth(MemberVO memberVO) {
+		memberMapper.giveAuth(memberVO);
+	}
 
+	@Override
+	public void removeAuth(MemberVO memberVO) {
+		memberMapper.removeAuth(memberVO);
+	}
+
+	@Override
+	public int isManager(MemberVO memberVO) {
+		return memberMapper.isManager(memberVO);
+	}
+
+	@Override
+	public int idDupChk(MemberVO memberVO) {
+		return  memberMapper.idDupChk(memberVO);
+	}
 
 }

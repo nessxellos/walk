@@ -32,10 +32,21 @@ public class HomeController {
 	}
 	
 	@PostMapping("join")
-	public String join(MemberVO memberVO) {
-		memberService.join(memberVO);
+	public ResponseEntity<String> join(MemberVO memberVO) {
 		
-		return "redirect:login";
+		int idDupChk = memberService.idDupChk(memberVO);
+		if (idDupChk==1) {
+			
+			HttpHeaders headers = new HttpHeaders();
+			headers.add("Content-Type", "text/html; charset=utf-8");
+			String str = Script.back("이미 사용중인 ID 입니다.");
+			return new ResponseEntity<String>(str, headers, HttpStatus.OK);
+		}
+		
+		memberService.join(memberVO);
+		String str = Script.href("회원가입 완료", "login");
+		
+		return new ResponseEntity<String> (str, HttpStatus.OK);
 	}
 	
 	@GetMapping("login")
