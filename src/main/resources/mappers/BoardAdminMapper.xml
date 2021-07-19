@@ -5,14 +5,16 @@
   
 <mapper namespace="com.project.walk.dao.BoardAdminMapper">
 	<insert id="insert">
+		<![CDATA[
 		INSERT INTO boardadminvo (id, title, content, regdate, hitcnt, likecnt, writer, bnum, membervo_id)
-		VALUES(seq_boardadminvo.nextval, #{title}, #{content}, sysdate, #{hitCnt}, 1, #{writer}, #{bnum}, #{membervo_id})
+		VALUES(seq_boardadminvo.nextval, #{title}, #{content}, sysdate, #{hitCnt}, #{likeCnt}, #{writer}, #{bnum}, #{membervo_id})
+		]]>
 	</insert>
 	
 	<select id="nextBoardNum" resultType="int">
 		<![CDATA[
-			SELECT NVL(MAX(bnum),0) + 1 AS bnum
-			FROM boardadminvo
+		SELECT NVL(MAX(bnum),0) + 1 AS bnum
+		FROM boardadminvo
 		]]>
 	</select>
 	
@@ -31,8 +33,18 @@
 	</select>
 	
 	<select id="update">
+		<![CDATA[
 		UPDATE boardadminvo 
 		SET title = #{title}, content = #{content} 
 		WHERE bnum = #{bnum}
+		]]>
 	</select>
+	
+	<delete id="delete">
+		<![CDATA[
+		DELETE 
+		FROM boardadminvo
+		WHERE bnum = #{bnum}
+		]]>
+	</delete>
 </mapper>

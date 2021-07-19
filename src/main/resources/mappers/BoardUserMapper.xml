@@ -5,18 +5,20 @@
   
 <mapper namespace="com.project.walk.dao.BoardUserMapper">
 	<insert id="insert">
+		<![CDATA[
 		INSERT INTO boarduservo (id, title, content, regdate, hitcnt, likecnt, writer, bnum, membervo_id)
 		VALUES(seq_boarduservo.nextval, #{title}, #{content}, sysdate, #{hitCnt}, #{likeCnt}, #{writer}, #{bnum}, #{membervo_id})
+		]]>
 	</insert>
 	
 	<select id="nextBoardNum" resultType="int">
 		<![CDATA[
-			SELECT NVL(MAX(bnum),0) + 1 AS bnum
-			FROM boarduservo
+		SELECT NVL(MAX(bnum),0) + 1 AS bnum
+		FROM boarduservo
 		]]>
 	</select>
 	
-		<!-- 유저 게시글  -->
+	<!-- 유저 게시글  -->
 	<select id="list" resultType="BoardUserVO" >
 		<![CDATA[
 		SELECT * FROM boarduservo ORDER BY id DESC
@@ -31,23 +33,35 @@
 	</select>
 	
 	<select id="update">
+		<![CDATA[
 		UPDATE boarduservo 
 		SET title = #{title}, content = #{content} 
 		WHERE bnum = #{bnum}
+		]]>
 	</select>
 	
 	<select id="updateHitcount">
+		<![CDATA[
 		UPDATE boarduservo
 		SET hitcnt = hitcnt+1
 		WHERE id = #{id}
+		]]>
 	</select>
+	
+	<delete id="delete">
+		<![CDATA[
+		DELETE 
+		FROM boarduservo
+		WHERE bnum = #{bnum}
+		]]>
+	</delete>
 	
 	<select id="bestList" resultType="BoardUserVO">
 		<![CDATA[
-			SELECT * 
-			FROM boarduservo, (SELECT b_id, COUNT(*) as cntlike FROM boardlike 
-							   GROUP BY b_id ORDER BY cntlike DESC) bestcnt 
-			WHERE id = bestcnt.b_id AND ROWNUM <=2
+		SELECT * 
+		FROM boarduservo, (SELECT b_id, COUNT(*) as cntlike FROM boardlike 
+						   GROUP BY b_id ORDER BY cntlike DESC) bestcnt 
+		WHERE id = bestcnt.b_id AND ROWNUM <=2
 		]]>
 	</select>
 	

@@ -5,15 +5,17 @@
   
 <mapper namespace="com.project.walk.dao.AttachMapper">
 	<insert id="insertAttach">
+		<![CDATA[
 		INSERT INTO attachvo (uuid, uploadpath, filename, filetype, bno)
 		VALUES(#{uuid}, #{uploadpath}, #{filename}, #{filetype}, #{bno})
+		]]>
 	</insert>
 	
 	<select id="getAttachesByBno" resultType="AttachVO">
 		<![CDATA[
-			SELECT *
-			FROM attachvo
-			WHERE bno = #{bno}
+		SELECT *
+		FROM attachvo
+		WHERE bno = #{bno}
 		]]>
 	</select>
 	

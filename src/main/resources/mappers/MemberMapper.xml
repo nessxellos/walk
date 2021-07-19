@@ -5,22 +5,24 @@
   
 <mapper namespace="com.project.walk.dao.MemberMapper">
 	<insert id="join">
+		<![CDATA[
 		INSERT INTO memberVO (id, password, username, regdate, email, addr)
 		VALUES(seq_membervo.nextval, #{password}, #{username}, sysdate, #{email}, #{addr})
+		]]>
 	</insert>
 	
 	<select id="getMemberById" resultType="MemberVO">
 		<![CDATA[
-			SELECT * 
-			FROM membervo
-			WHERE username = #{username}
+		SELECT * 
+		FROM membervo
+		WHERE username = #{username}
 		]]>
 	</select> 
 	
 	<select id="count" resultType="int">
 		<![CDATA[
-			SELECT count(id) 
-			FROM membervo
+		SELECT count(id) 
+		FROM membervo
 		]]>
 	</select>
 	
@@ -36,31 +38,47 @@
 		]]>
 	</select>
 	
+	<delete id="remove">
+		<![CDATA[
+		DELETE 
+		FROM membervo
+		WHERE id = #{id}
+		]]>
+	</delete>
+	
 	<!-- 권한 부여 -->
 	<insert id="giveAuth">
+		<![CDATA[
 		UPDATE memberVO 
 		SET auth = 2
 		WHERE id = #{id}
+		]]>
 	</insert>
 	
-		<!-- 권한 회수 -->
+	<!-- 권한 회수 -->
 	<insert id="removeAuth">
+		<![CDATA[
 		UPDATE memberVO 
 		SET auth = 3
 		WHERE id = #{id}
+		]]>
 	</insert>
 	
 		<!-- 권한 확인 -->
 	<select id="isManager" resultType="int">
+		<![CDATA[
 		SELECT auth
     	FROM memberVO
     	WHERE id=#{id}
+    	]]>
 	</select>
 	
 	<!-- ID 중복체크 -->
 	<select id="idDupChk" resultType="int">
+		<![CDATA[
 		SELECT COUNT(*) FROM membervo
 		WHERE username = #{username}
+		]]>
 	</select>
 	
 </mapper>
