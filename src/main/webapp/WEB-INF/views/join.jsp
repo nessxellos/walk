@@ -3,240 +3,205 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 
-<!-- style -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>산책</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-onix-digital.css">
+    <link rel="stylesheet" href="assets/css/animated.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+<!--
+
+TemplateMo 565 Onix Digital
+
+https://templatemo.com/tm-565-onix-digital
+
+-->
+
 <style>
-#back {
-	background: url(images/back01.jpg) no-repeat;
-	width: 100%;
-	height: 1080px;
-	background-attachment: fixed /* 배경이미지 고정*/
+
+input {
+	border-radius: 20px;
 }
-#back2 {
-	background: url(images/back02-2.jpg) repeat-y;
-	width: 960px;
-	height: 1200px;
-	margin-left: 25%;
-	margin-top: -25px;
-	Opacity: .8;
+
+
+button {
+  width: 200px;
+  color: white;
+  font-size: 15px;
+  background-color: #4CAF50;
+  border-radius: 20px;
+  margin-bottom: 10%;
 }
-#title h1 {
-	position: absolute;
-	background: url(images/title11.png) no-repeat;
-	width: 811px;
-	height: 173px;
-	float: left;
-	position: relative;
-	top: 50px;
-	left: 20%;
+
+
+table {
+  border-collapse: separate;
+  border-spacing: 0 30px;
 }
-/*  topMenu  */
-#topMenu {
-	float: right; /* 어울림형태로 요소 오른쪽에 배치 */
-	position: relative; /* 현재 삽입된 위치들 기준으로 상대좌표방식으로 위치지정 */
-	top: -185px; /* position:relative 의 속성 */
-	left: 120px;
-	margin: 10px; /* 바깥여백설정 */
-	margin-right: 20% /* 오른쪽바깥여백 설정*/
-}
-#topMenu a {
-	color: #333; /* a의 글자색상설정 */
-	text-decoration: none; /* a의 링크밑줄 없앰 */
-	font-weight: bold; /* 글자굵기를 굵게설정 */
-	font-family: "Arial Black", arial; /* 글자체를 설정 */
-}
-#topMenu a:hover {
-	color: #00D8FF; /* 마우스오버했을때 글자색상설정 */
-}
-#topMenu li {
-	list-style: none;
-	font: 12px "맑은 고딕", 돋움, arial; /* 글자크기,글자체설정 */
-	float: left; /* 어울림형태로 요소왼쪽에 배치 */
-}
-#topMenu li.liStyle:after {
-	content: "  l  "; /* li의 liStyle클래스이후 컨텐트내용을 표시 */
-	white-space: pre; /* 소스를입력한 그대로 줄바꿈과 공백이 적용 */
-}
-/*-------------------------------------------------------- */
-a, a:hover {
-	text-decoration: none;
-}
-/**********/
-#menu {
-	margin-top: 100px;
-	margin-left: 12%;
-	border: 0px black solid;
-	border-radius: 0px;
-	clear: both;
-	height: 4em;
-}
-/* 드랍 다운 버튼 시작 */
-.nav {
-	z-index: 100;
-	position: relative;
-	float: left;
-	top: -15px;
-	width: 100%;
-	text-align: center;
-	font: 12px "맑은 고딕", 돋움, arial; /* 글자크기,글자체설정 */
-	/* 	border-top: solid 1px rgba(192, 192, 192, 0.35); 윗 줄 만들기
-	border-bottom: solid 1px rgba(192, 192, 192, 0.35); 아랫 줄 만들기 */
-}
-.dropbtn {
-	background-color: #FFFFFF;
-	color: black;
-	padding: 16px;
-	font-size: 16px;
-	border: none;
-	cursor: pointer;
-	Opacity: 1;
-}
-.dropdown {
-	position: relative;
-	display: inline-block;
-}
-.dropdown-content {
-	display: none;
-	position: absolute;
-	background-color: #f9f9f9;
-	min-width: 160px;
-	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-}
-.dropdown-content a {
-	color: black;
-	padding: 12px 16px;
-	text-decoration: none;
-	display: block;
-}
-.dropdown-content a:hover {
-	background-color: #f1f1f1
-}
-.dropdown:hover .dropdown-content {
-	display: block;
-}
-.dropdown:hover .dropbtn {
-	background-color: #3e8e41;
-}
-/* 드랍 다운 버튼 끝 */
-/*-------------------------------------------------------- */
-/*-------------------------------------------------------- */
-/* 회원가입 */
-#login {
-	float: left;
-	position: relative;
-	top: 30px;
-	line-height: 60px;
-	left: 350px;
-	border-radius:30px;
-	border: 1px solid #444444;
-}
-#bt {
-	margin-left: 90px;
-	border-radius:30px;
-}
-/* 회원가입 끝 */
-    #banner {
-	background:url(images/banner10.png) no-repeat;
-	width:90px;
-	height:79px;
-	position: absolute;
-	margin-left: 40px;
-	margin-top: 220px;
-    }
-    #banner2 {
-	background:url(images/banner20.png) no-repeat;
-	width:200px;
-	height:80px;
-	position: absolute;
-	margin-left: 750px;
-	margin-top: 220px;
-    }
+
 </style>
-<title>Insert title here</title>
-</head>
-<body id="back">
-  <div id="back2">
-  <div id="banner"></div>
-  <div id="banner2"></div>
-	<div id="title">
-    
-    	<a href="main.html"><h1></h1></a>
 
-  	</div>
 
-	<nav>
-		<ul id="topMenu">
-			<li class="liStyle"><a href="login1_1.html">로그인</a></li>
-			<li class="liStyle"><a href="mypage.jsp">마이페이지</a></li>
-			<li class="liStyle"><a href="listCart.jsp">장바구니</a></li>
-			
-        </ul>
 
-	</nav>
+  </head>
+
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="/" class="logo">
+              <img src="assets/images/banner20.png">
+            </a>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+              <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+              <li class="scroll-to-section"><a href="#services">사용방법</a></li>
+              <li class="scroll-to-section"><a href="#about">관리자 게시판</a></li>
+              <li class="scroll-to-section"><a href="#portfolio">유저 게시판</a></li>
+              <li class="scroll-to-section"><a href="#video">BEST 인기글</a></li> 
+              <li class="scroll-to-section"><a href="#contact">서비스 이용 약관</a></li> 
+              <li class="scroll-to-section"><div class="main-red-button-hover"><a href="#contact">시작하기</a></div></li> 
+            </ul>        
+            <a class='menu-trigger'>
+                <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <div class="main-banner" id="top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-6 align-self-center">
+              <div class="owl-carousel owl-banner">
+                <div class="item header-text">
+                  <h6>산책을 하러가실까요?</h6>
+                  <h2>강아지랑 산책 <em>친구들과 산책</em> 또는 <span>혼자 산책</span></h2>
+                  <p>음하하하</p>
+                  <div class="down-buttons">
+                    <div class="main-blue-button-hover">
+                      <a href="#contact">강아지랑 산책</a>
+                    </div>
+                    <div class="call-button">
+                      <a href="#"><i class="fa fa-phone"></i> 010-11</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="item header-text">
+                  <h6>산책을 하러가실까요?</h6>
+                  <h2>강아지랑 산책 <em>친구들과 산책</em> 또는 <span>혼자 산책</span></h2>
+                  <p>음하하하</p>
+                  <div class="down-buttons">
+                    <div class="main-blue-button-hover">
+                      <a href="#services">친구들과 산책</a>
+                    </div>
+                    <div class="call-button">
+                      <a href="#"><i class="fa fa-phone"></i> 010-22</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="item header-text">
+                  <h6>산책을 하러가실까요?</h6>
+                  <h2>강아지랑 산책 <em>친구들과 산책</em> 또는 <span>혼자 산책</span></h2>
+                  <p>음하하하</p>
+                  <div class="down-buttons">
+                    <div class="main-blue-button-hover">
+                      <a href="#video">혼자산책</a>
+                    </div>
+                    <div class="call-button">
+                      <a href="#"><i class="fa fa-phone"></i> 010-33</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   
-<!-- 드랍다운 버튼 시작 -->
-	<div class="nav">
-		
-		<div class="dropdown">
-			<button class="dropbtn" href="#">게시판</button>
-			<div class="dropdown-content">
-				
-			 </div>
-		</div>
-		
-		<div class="dropdown" href="#">
-			<button class="dropbtn">산책</button>
-			<div class="dropdown-content">
-				
-			 </div>
-		</div>
-		
-		<div class="dropdown" href="#">
-			<button class="dropbtn">추천</button>
-			<div class="dropdown-content">
-				
-			 </div>
-		</div>
 
-		<div class="dropdown" href="#">
-			<button class="dropbtn">잡담</button>
-			<div class="dropdown-content">
-				
-			 </div>
-		</div>
-
-		<div class="dropdown" href="#">
-			<button class="dropbtn">고객센터</button>
-			<div class="dropdown-content">
-				<a href="sub05_1.html">공지사항</a>
-				<a href="sub05_2.html">후기게시판</a>
-				<a href="sub05_3.html">자유게시판</a>
-				<a href="sub05_4.html">질문과 답변</a>
-			</div>
-		</div>
+  
 
 
-		<div class="dropdown" href="#">
-			<button class="dropbtn">경품추천</button>
-			<div class="dropdown-content">
-				<a href="index.html">룰렛</a>
-			</div>
-		</div>
-		
-</div>
+  <!-- Scripts -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/owl-carousel.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/imagesloaded.js"></script>
+  <script src="assets/js/custom.js"></script>
 
+  <script>
+  // Acc
+    $(document).on("click", ".naccs .menu div", function() {
+      var numberIndex = $(this).index();
+
+      if (!$(this).is("active")) {
+          $(".naccs .menu div").removeClass("active");
+          $(".naccs ul li").removeClass("active");
+
+          $(this).addClass("active");
+          $(".naccs ul").find("li:eq(" + numberIndex + ")").addClass("active");
+
+          var listItemHeight = $(".naccs ul")
+            .find("li:eq(" + numberIndex + ")")
+            .innerHeight();
+          $(".naccs ul").height(listItemHeight + "px");
+        }
+    });
+  </script>
+  
+<center>
 <div id="login">
 <form action="join" method="post">
 <table>
-<caption>
-	<h1>회원 가입</h1>
-</caption>
+
 
 <tr>
 <td>Name :  </td>
-<td><input type="text" name="username" required="required"><br/>
-</tr> 
+<td><input type="text" name="username"><br/></td>
+</tr>
 
 <tr>
 <td>Password : </td>
@@ -258,6 +223,78 @@ a, a:hover {
 <button>회원가입</button>
 </form>
 </div>
-</div>
+</center>
+
+
+
+
+
+
+<div class="footer-dec">
+    <img src="assets/images/footer-dec.png" alt="">
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="about footer-item">
+            <div class="logo">
+              <a href="#"><img src="assets/images/banner20.png" alt="Onix Digital TemplateMo"></a>
+            </div>
+            <a href="#">soulno@naver.com</a>
+            <ul>
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-behance"></i></a></li>
+              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="services footer-item">
+            <h4>서비스</h4>
+            <ul>
+              <li><a href="#">개발</a></li>
+              <li><a href="#">성장</a></li>
+              <li><a href="#">소셜 미디어 관리</a></li>
+              <li><a href="#">웹 사이트 최적화</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="community footer-item">
+            <h4>이용 약관</h4>
+            <ul>
+              <li><a href="#">사용방법</a></li>
+              <li><a href="#">공지사항</a></li>
+              <li><a href="#">Q & A</a></li>
+              <li><a href="#">소개</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="subscribe-newsletters footer-item">
+            <h4>구독</h4>
+            <p>자신의 아이디어를 메일로 보내주세요.</p>
+            <form action="#" method="get">
+              <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="이메일을 입력하세요." required="">
+              <button type="submit" id="form-submit" class="main-button "><i class="fa fa-paper-plane-o"></i></button>
+            </form>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="copyright">
+            <p>2021 walk-Project. 
+            <br>
+            <a rel="nofollow" href="https://templatemo.com" title="free CSS templates"></a>Thanks you<br>
+            
+          </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

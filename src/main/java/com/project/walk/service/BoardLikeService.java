@@ -11,4 +11,7 @@ public interface BoardLikeService {
 	public int alreadyLike(BoardLike boardLike);
 	
 	public void subLike(BoardLike boardLike);
+	
+	public void updateLc(BoardLike boardLike);
+
 }

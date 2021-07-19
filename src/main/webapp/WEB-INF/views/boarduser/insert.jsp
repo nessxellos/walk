@@ -59,7 +59,7 @@
 			<br>
 			<br>
 			<textarea id="summernote" name="content"></textarea>
-			<button type="submit" style="float: right;">회원정보 수정하기</button>
+			<button type="submit" style="float: right;">글 쓰기 완료</button>
 		</form>
 	</div>
 

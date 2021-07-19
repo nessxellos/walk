@@ -48,6 +48,8 @@ public class BoardUserController {
 	public List<BoardUserVO> list(Model model) {
 		model.addAttribute("lists", boarduserservice.list());
 
+
+		
 		return boarduserservice.list();
 	}
 

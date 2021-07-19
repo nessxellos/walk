@@ -15,6 +15,8 @@ public class BoardLikeServiceImpl implements BoardLikeService {
 	@Override
 	public void addLike(BoardLike boardLike) {
 		boardLikeMapper.addLike(boardLike);
+		boardLikeMapper.updateLc(boardLike);
+
 	}
 
 	@Override
@@ -31,6 +33,14 @@ public class BoardLikeServiceImpl implements BoardLikeService {
 	@Override
 	public void subLike(BoardLike boardLike) {
 		boardLikeMapper.subLike(boardLike);
+		boardLikeMapper.updateLc(boardLike);
+
+		
+	}
+
+	@Override
+	public void updateLc(BoardLike boardLike) {
+		boardLikeMapper.updateLc(boardLike);
 		
 	}
 

@@ -8,6 +8,7 @@ import com.project.walk.vo.BoardLike;
 public interface BoardLikeMapper {
 	
 	public void addLike(BoardLike boardLike);
+	public void updateLc(BoardLike boardLike);
 	
 	public int totLike(int b_id);
 	
