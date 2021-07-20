@@ -50,7 +50,7 @@ public class BoardAdminController {
 	public String detail(@PathVariable int id, Model model) {
 		BoardAdminVO boardadmin = boardadminservice.detail(id);
 		model.addAttribute("boardadmin", boardadmin);
-		return "boarduser/detail";
+		return "boardadmin/detail";
 	}
 
 	// 글쓰기 폼
@@ -143,14 +143,14 @@ public class BoardAdminController {
 	public String update(Model model, @PathVariable int bnum) {
 		BoardAdminVO boardadminvo = boardadminservice.detail(bnum);
 		model.addAttribute("boardadminvo", boardadminvo);
-		return "boarduser/update";
+		return "boardadmin/update";
 	}
 
 	// 수정하기
 	@PostMapping("update")
 	public String update(BoardAdminVO boardadminvo) {
 		boardadminservice.update(boardadminvo);
-		return "boarduser/list";
+		return "boardadmin/list";
 	}
 
 	// 삭제하기

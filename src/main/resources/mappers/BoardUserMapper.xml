@@ -61,7 +61,7 @@
 		SELECT * 
 		FROM boarduservo, (SELECT b_id, COUNT(*) as cntlike FROM boardlike 
 						   GROUP BY b_id ORDER BY cntlike DESC) bestcnt 
-		WHERE id = bestcnt.b_id AND ROWNUM <=2
+		WHERE id = bestcnt.b_id AND ROWNUM <=3
 		]]>
 	</select>
 	

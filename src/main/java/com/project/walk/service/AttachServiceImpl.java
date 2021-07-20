@@ -5,22 +5,24 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.walk.dao.AttachMapper;
+import com.project.walk.dao.AttachAdminMapper;
 import com.project.walk.vo.AttachVO;
 
 @Service
-public class AttachServiceImpl implements AttachService {
+public class AttachServiceImpl implements AttachAdminService {
 
 	@Autowired
-	private AttachMapper attachMapper;
+	private AttachAdminMapper attachAdminMapper;
 	
+
 	@Override
-	public int insertAttach(AttachVO attachVO) {
-		return attachMapper.insertAttach(attachVO);
+	public int insertAttachAdmin(AttachVO attachVO) {
+		return attachAdminMapper.insertAttachAdmin(attachVO);
 	}
 
 	@Override
-	public List<AttachVO> getAttachesByBno(int bno) {
+	public List<AttachVO> getAttachesAdminByBno(int bno) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 		

@@ -33,11 +33,16 @@
 	</div>
 	<br />
 	<br />
+<div>
+	<textarea rows="3" cols="50" id="msg"></textarea>
+	<input type="button" value="댓글쓰기" id="btnComment">
+</div><hr />
+<div id="replyResult"></div>
 	<script>
 		var init = function() {
 			$.ajax({
 				type : "get",
-				url : "/reply/commentList",
+				url : "/replyadmin/commentList",
 				data : {
 					"bnum" : $("#num").val()
 				}
@@ -54,7 +59,7 @@
 						})
 						$("#replyResult").html(str);
 					}).fail(function(e) {
-				alret("실패")
+				alert("실패")
 			})
 		}
 		// 댓글쓰기
@@ -69,7 +74,7 @@
 			}
 			$.ajax({
 				type : "post",
-				url : "/reply/commentInsert",
+				url : "/replyadmin/commentInsert",
 				contentType : "application/json;charset=utf-8",
 				data : JSON.stringify(data)
 			}).done(function() {
@@ -103,7 +108,7 @@
 			//alert(cnum)
 			$.ajax({
 				type : "DELETE",
-				url : "/reply/delete/" + cnum
+				url : "/replyadmin/delete/" + cnum
 			}).done(function(resp) {
 				alert(resp + "번 글 삭제 완료")
 				init()

@@ -16,7 +16,7 @@
   <c:forEach items="${ lists }" var="boardadminvo">
   <ul>
     <li>
-      <a href="/boarduser/detail/${boardadminvo.id }">제목 : ${ boardadminvo.title }</a>
+      <a href="/boardadmin/detail/${boardadminvo.id }">제목 : ${ boardadminvo.title }</a>
       <span>조회수 : ${ boardadminvo.hitCnt }</span>
       
     </li>

@@ -33,8 +33,8 @@
 	<br>
 
 	<div style="width: 60%; margin: auto;">
-		<form method="post" action="/boarduser/insert" enctype="multipart/form-data">
-			<input type="text" name="writer" style="width: 20%;" value="${ MemberVO.username }" /><br> 
+		<form method="post" action="/boardadmin/insert" enctype="multipart/form-data">
+			<input type="text" name="writer" style="width: 20%;" value="${ memberVO.username }" /><br> 
 			<input type="text" name="title" style="width: 40%;" placeholder="제목" />
 
 			<!-- 파일 업로드 시작 -->
@@ -58,7 +58,7 @@
 			<br>
 			<br>
 			<textarea id="summernote" name="content"></textarea>
-			<button type="submit" style="float: right;">회원정보 수정하기</button>
+			<button type="submit" style="float: right;">글 쓰기 완료</button>
 		</form>
 	</div>
 	

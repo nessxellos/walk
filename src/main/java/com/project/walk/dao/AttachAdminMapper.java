@@ -7,10 +7,10 @@ import org.apache.ibatis.annotations.Mapper;
 import com.project.walk.vo.AttachVO;
 
 @Mapper
-public interface AttachMapper {
+public interface AttachAdminMapper {
 	
-	public int insertAttach(AttachVO attachVO);
+	public int insertAttachAdmin(AttachVO attachVO);
 	
-	public List<AttachVO> getAttachesByBno(int bno);
+	public List<AttachVO> getAttachesAdminByBno(int bno);
 	
 }

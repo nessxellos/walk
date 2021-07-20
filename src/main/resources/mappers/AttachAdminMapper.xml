@@ -3,18 +3,18 @@
   PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="com.project.walk.dao.AttachMapper">
-	<insert id="insertAttach">
+<mapper namespace="com.project.walk.dao.AttachAdminMapper">
+	<insert id="insertAttachAdmin">
 		<![CDATA[ 
-		INSERT INTO attachvo (uuid, uploadpath, filename, filetype, bno)
+		INSERT INTO attachadmin (uuid, uploadpath, filename, filetype, bno)
 		VALUES(#{uuid}, #{uploadpath}, #{filename}, #{filetype}, #{bno})
 		]]>
 	</insert>
 	
-	<select id="getAttachesByBno" resultType="AttachVO">
+	<select id="getAttachesAdminByBno" resultType="AttachVO">
 		<![CDATA[
 		SELECT *
-		FROM attachvo
+		FROM attachadmin
 		WHERE bno = #{bno}
 		]]>
 	</select>

@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.walk.dao.AttachMapper;
+import com.project.walk.dao.AttachAdminMapper;
 import com.project.walk.dao.BoardAdminMapper;
 import com.project.walk.vo.AttachVO;
 import com.project.walk.vo.BoardAdminVO;
@@ -17,7 +17,7 @@ public class BoardAdminServiceImpl implements BoardAdminService {
 	private BoardAdminMapper boardadminMapper;
 	
 	@Autowired
-	private AttachMapper attachMapper;
+	private AttachAdminMapper attachAdminMapper;
 	
 	@Override
 	public List<BoardAdminVO> list() {
@@ -51,7 +51,7 @@ public class BoardAdminServiceImpl implements BoardAdminService {
 		
 		if (attachList.size() > 0) {
 			for (AttachVO attachVO : attachList) {
-			attachMapper.insertAttach(attachVO);
+			attachAdminMapper.insertAttachAdmin(attachVO);
 			}
 		}
 		

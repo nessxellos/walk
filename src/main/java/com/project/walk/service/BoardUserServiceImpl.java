@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.walk.dao.AttachMapper;
+import com.project.walk.dao.AttachUserMapper;
 import com.project.walk.dao.BoardUserMapper;
 import com.project.walk.vo.AttachVO;
 import com.project.walk.vo.BoardUserVO;
@@ -16,7 +16,7 @@ public class BoardUserServiceImpl implements BoardUserService {
 	private BoardUserMapper boarduserMapper;
 	
 	@Autowired
-	private AttachMapper attachMapper;
+	private AttachUserMapper attachUserMapper;
 	
 	@Override
 	public List<BoardUserVO> list() {
@@ -71,7 +71,7 @@ public class BoardUserServiceImpl implements BoardUserService {
 		
 		if (attachList.size() > 0) {
 			for (AttachVO attachVO : attachList) {
-			attachMapper.insertAttach(attachVO);
+			attachUserMapper.insertAttachUser(attachVO);
 			}
 		}
 	}
