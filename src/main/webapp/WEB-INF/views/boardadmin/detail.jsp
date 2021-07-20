@@ -36,13 +36,14 @@ body {
 		<form>
 			<br />
 			<h2>게시글 상세보기</h2>
+			<input type="hidden" id="username" name="username"
+				value="${memberVO.username }">
 		<br />
 			<table class="table table-bordered">
             <colgroup>
                <col style="width: 20%;">
                <col style="width: 80%">
             </colgroup>	
-
 			           <tr>
                <th>게시글 번호</th>
 
@@ -76,7 +77,7 @@ body {
 
          <c:choose>
             <c:when test="${ not empty memberVO }">
-               <a href="/boarduser/update/${boarduser.id}" class="btn btn-danger  btn-sm">수정하기</a>
+               <a href="/boardadmin/update/${boardadmin.id}" class="btn btn-danger  btn-sm">수정하기</a>
                <button type="button" id="btnDelete" class="btn btn-danger  btn-sm">삭제</button>
             </c:when>
          </c:choose>
@@ -156,7 +157,7 @@ $("#btnDelete").click(function() {
 }) //btnDelete
 
 /* 댓글 삭제  */
-function fdel(cnum) {
+function fdel(id) {
 	//alert(cnum)
 	$.ajax({
 		type : "DELETE",
