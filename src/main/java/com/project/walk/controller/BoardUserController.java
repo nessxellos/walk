@@ -165,7 +165,7 @@ public class BoardUserController {
 	@PostMapping("update") 
 	public String update(BoardUserVO boardUserVO) {
 		boarduserservice.update(boardUserVO);
-		return "redirect:/boarduser/detail/"+boardUserVO.getBnum();
+		return "redirect:/boarduser/detail/"+boardUserVO.getId();
 	}
 
 	// 댓글 추가

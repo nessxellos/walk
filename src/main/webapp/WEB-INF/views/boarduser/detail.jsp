@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="../includes/header.jsp"%>
+
 
 
 <!DOCTYPE html>
@@ -100,7 +102,7 @@ $("#btnComment").click(function() {
 $("#btnUpdate").click(function() {
 	if (!confirm('정말 수정할까요?'))
 		return false;
-	location.href = "/boarduser/update/${boarduser.bnum}"
+	location.href = "/boarduser/update/${boarduser.id}"
 })
 
 // 게시판 글 삭제
