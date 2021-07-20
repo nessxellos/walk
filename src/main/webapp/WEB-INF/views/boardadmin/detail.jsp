@@ -85,7 +85,7 @@ $("#btnComment").click(function() {
 $("#btnUpdate").click(function() {
 	if (!confirm('정말 수정할까요?'))
 		return false;
-	location.href = "/boardadmin/update/${boardadmin.bnum}"
+	location.href = "/boardadmin/update/${boardadmin.id}"
 })
 
 // 게시판 글 삭제

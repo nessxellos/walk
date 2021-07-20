@@ -44,7 +44,7 @@
 				<div class="file-field input-field col s12">
 					<div class="btn">
 						<span><i class="material-icons left"></i></span> 
-						<input type="file" name="files" multiple>
+						<input type="file" name="files" multiple required="required">
 					</div>
 					<div class="file-path-wrapper">
 						<br>

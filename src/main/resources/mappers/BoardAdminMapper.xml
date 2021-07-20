@@ -6,8 +6,8 @@
 <mapper namespace="com.project.walk.dao.BoardAdminMapper">
 	<insert id="insert">
 		<![CDATA[
-		INSERT INTO boardadminvo (id, title, content, regdate, hitcnt, writer, bnum, membervo_id)
-		VALUES(seq_boardadminvo.nextval, #{title}, #{content}, sysdate, #{hitCnt}, #{writer}, #{bnum}, #{membervo_id})
+		INSERT INTO boardadminvo (id, title, content, regdate, hitcnt, writer, bnum, membervo_id, uploadpath)
+		VALUES(seq_boardadminvo.nextval, #{title}, #{content}, sysdate, #{hitCnt}, #{writer}, #{bnum}, #{membervo_id}, #{uploadpath})
 		]]>
 	</insert>
 	

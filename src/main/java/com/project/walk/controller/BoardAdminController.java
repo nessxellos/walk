@@ -106,6 +106,7 @@ public class BoardAdminController {
 				attachVO.setFiletype("O");
 			}
 			attachList.add(attachVO);
+			boardAdminVO.setUploadpath("/resources/upload/"+attachVO.getUploadpath()+"/"+attachVO.getUuid()+"_"+attachVO.getFilename());
 		}
 
 		 boardadminservice.insertBoardAndAttaches(boardAdminVO, attachList);
@@ -139,9 +140,9 @@ public class BoardAdminController {
 	}
 	
 	// 수정 폼
-	@GetMapping("update/{bnum}")
-	public String update(Model model, @PathVariable int bnum) {
-		BoardAdminVO boardadminvo = boardadminservice.detail(bnum);
+	@GetMapping("update/{id}")
+	public String update(Model model, @PathVariable int id) {
+		BoardAdminVO boardadminvo = boardadminservice.detail(id);
 		model.addAttribute("boardadminvo", boardadminvo);
 		return "boardadmin/update";
 	}

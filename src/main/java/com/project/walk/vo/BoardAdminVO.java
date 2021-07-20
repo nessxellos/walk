@@ -17,6 +17,7 @@ public class BoardAdminVO {
 	private Date regDate;
 	private int hitCnt;
 	private int membervo_id;
+	private String uploadpath;
 
 }
 
