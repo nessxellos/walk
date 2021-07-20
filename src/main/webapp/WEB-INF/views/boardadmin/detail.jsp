@@ -146,7 +146,7 @@ $("#btnDelete").click(function() {
 		return false;
 	$.ajax({
 		type : "delete",
-		url : "/boardadmin/delete/"+$("#id").val(),
+		url : "/boardadmin/delete/"+${boardadmin.id},
 		success : function(resp) {
 			if (resp == "success") {
 				alert("삭제성공");

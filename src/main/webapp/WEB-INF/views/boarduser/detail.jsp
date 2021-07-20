@@ -152,7 +152,7 @@ $("#btnDelete").click(function() {
 		return false;
 	$.ajax({
 		type : "delete",
-		url : "/boarduser/delete/"+$("#id").val(),
+		url : "/boarduser/delete/"+${boarduser.id},
 		success : function(resp) {
 			if (resp == "success") {
 				alert("삭제성공");

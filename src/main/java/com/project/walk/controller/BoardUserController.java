@@ -183,10 +183,10 @@ public class BoardUserController {
 	}
 	
 	// 글 삭제하기
-	 @DeleteMapping("delete/{bnum}")
+	 @DeleteMapping("delete/{id}")
 	 @ResponseBody
-	 public String delete(@PathVariable int bnum) {
-		 boarduserservice.delete(bnum);
+	 public String delete(@PathVariable int id) {
+		 boarduserservice.delete(id);
 		 return "success";
 	 }	
 
