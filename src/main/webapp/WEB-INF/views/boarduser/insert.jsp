@@ -37,6 +37,7 @@
 		<form method="post" action="/boarduser/insert" enctype="multipart/form-data">
 			<input type="text" name="writer" style="width: 20%;" value="${ memberVO.username }" readonly="readonly"/><br> 
 			<input type="text" name="title" style="width: 40%;" placeholder="제목" />
+			<input type="hidden" name="membervo_id"  value="${memberVO.id}" />
 
 			<!-- 파일 업로드 시작 -->
 			
@@ -45,7 +46,7 @@
 				<div class="file-field input-field col s12">
 					<div class="btn">
 						<span><i class="material-icons left"></i></span> 
-						<input type="file" name="files" multiple>
+						<input type="file" name="files" multiple required="required">
 					</div>
 					<div class="file-path-wrapper">
 						<br>
