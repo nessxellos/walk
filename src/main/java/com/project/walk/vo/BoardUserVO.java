@@ -18,5 +18,5 @@ public class BoardUserVO {
 	private int hitCnt;
 	private int likeCnt;
 	private int membervo_id;
-
+	private String uploadpath;
 }

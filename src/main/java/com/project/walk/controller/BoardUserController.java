@@ -83,7 +83,7 @@ public class BoardUserController {
 		boardUserVO.setHitCnt(0);
 
 		ServletContext application = request.getServletContext();
-		String realPath = application.getRealPath("/resources/upload");
+		String realPath = application.getRealPath("/upload/");
 
 		File uploadPath = new File(realPath, getDateFolder());
 
@@ -102,7 +102,7 @@ public class BoardUserController {
 			UUID uuid = UUID.randomUUID();
 			String uploadFilename = uuid.toString() + "_" + originalFilename;
 
-			multipartFile.transferTo(new File(uploadPath, uploadFilename));
+			multipartFile.transferTo(new File("/", uploadFilename));
 
 			AttachVO attachVO = new AttachVO();
 			attachVO.setBno(boardUserVO.getBnum());
@@ -115,8 +115,9 @@ public class BoardUserController {
 				attachVO.setFiletype("O");
 			}
 			attachList.add(attachVO);
+		boardUserVO.setUploadpath("/resources/upload/"+attachVO.getUploadpath()+"/"+attachVO.getUuid()+"_"+attachVO.getFilename());
 		}
-
+		
 		boarduserservice.insertBoardAndAttaches(boardUserVO, attachList);
 
 //		rttr.addAttribute("num", boardUserVO.getBnum());

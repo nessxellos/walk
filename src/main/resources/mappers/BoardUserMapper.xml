@@ -6,8 +6,8 @@
 <mapper namespace="com.project.walk.dao.BoardUserMapper">
 	<insert id="insert">
 		<![CDATA[
-		INSERT INTO boarduservo (id, title, content, regdate, hitcnt, likecnt, writer, bnum, membervo_id)
-		VALUES(seq_boarduservo.nextval, #{title}, #{content}, sysdate, #{hitCnt}, #{likeCnt}, #{writer}, #{bnum}, #{membervo_id})
+		INSERT INTO boarduservo (id, title, content, regdate, hitcnt, likecnt, writer, bnum, membervo_id, uploadpath)
+		VALUES(seq_boarduservo.nextval, #{title}, #{content}, sysdate, #{hitCnt}, #{likeCnt}, #{writer}, #{bnum}, #{membervo_id}, #{uploadpath})
 		]]>
 	</insert>
 	

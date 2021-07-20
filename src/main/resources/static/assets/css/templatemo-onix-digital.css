@@ -875,8 +875,9 @@ Banner Style
   position: absolute;
   left: 0;
   top: 100px;
-  width: 267px;
-  height: 532px;
+  width: 467px;
+  height: 632px;
+  opacity:0.2;
 }
 
 .main-banner:before {
