@@ -32,8 +32,11 @@ import com.project.walk.vo.BoardLike;
 import com.project.walk.vo.BoardUserVO;
 import com.project.walk.vo.CommentUserVO;
 
+import lombok.extern.java.Log;
+
 @Controller
 @RequestMapping("/boarduser/*")
+@Log
 public class BoardUserController {
 	@Autowired
 	private BoardUserService boarduserservice;
@@ -83,7 +86,9 @@ public class BoardUserController {
 		boardUserVO.setHitCnt(0);
 
 		ServletContext application = request.getServletContext();
-		String realPath = application.getRealPath("/upload/");
+		String realPath = application.getRealPath("/resources/upload/");
+		log.info("realPath : " + realPath);
+
 
 		File uploadPath = new File(realPath, getDateFolder());
 
@@ -102,7 +107,7 @@ public class BoardUserController {
 			UUID uuid = UUID.randomUUID();
 			String uploadFilename = uuid.toString() + "_" + originalFilename;
 
-			multipartFile.transferTo(new File("/", uploadFilename));
+			multipartFile.transferTo(new File(uploadPath, uploadFilename));
 
 			AttachVO attachVO = new AttachVO();
 			attachVO.setBno(boardUserVO.getBnum());

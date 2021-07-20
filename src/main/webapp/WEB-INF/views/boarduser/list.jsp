@@ -73,7 +73,7 @@ html {
   
 }
 .card .thumb {
-  padding-bottom: 60%;
+  padding-bottom: 0%;
   background-size: cover;
   background-position: center center;
 }
@@ -105,16 +105,15 @@ h1 {
 
 <!--  -->
 <br><br>
-<c:forEach items="${ lists }" var="boarduservo">
-<a href="${boarduservo.uploadpath}"><img src="../upload/2021/07/20/test.png"></a>                        		                   		
+<c:forEach items="${ lists }" var="boarduservo">                       		                   		
 <div class="support-grid"></div>
 
   <div class="band">
   
     <div class="item-1">
     
-          <a href="/" class="card">
-          <div class="thumb" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flex-1.jpg);"></div> 
+          <a href="/boarduser/detail/${boarduservo.id }" class="card">
+          <img class="thumb" src="${boarduservo.uploadpath}" width="200" height="300" /> 
           </a>
             
           
@@ -124,18 +123,18 @@ h1 {
     
     <div class="item-2">
     <br>
-          <a href="/boarduser/detail/${boarduservo.id }">제목 : ${ boarduservo.title }</a>
+          <a href="/boarduser/detail/${boarduservo.id }" >제목 : ${ boarduservo.title }</a>
             <article>
               
             </article>
           
     </div>
     <div class="item-3">
-      <a href="https://design.tutsplus.com/articles/envato-tuts-community-challenge-created-by-you-july-edition--cms-26724" class="card">
+      <a href="/boarduser/detail/${boarduservo.id }" class="card">
         <article>
           <h1><span>조회수 : ${ boarduservo.hitCnt }</span></h1>
-          <p> ${boarduservo. content } </p>
-          <span>Melody Nieves</span>
+          <span>추천수 : ${boarduservo.likeCnt}</span>
+          <p> ${boarduservo.content}  </p>
         </article>
       </a>
     </div>
