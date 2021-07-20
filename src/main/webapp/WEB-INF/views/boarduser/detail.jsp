@@ -8,49 +8,90 @@
 <!DOCTYPE html>
 <html>
 <title>게시글 상세 보기</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
+<style>
+body {
+   margin-top: 0px
+}
+
+* {
+   margin: 0px;
+   padding: 0px;
+   box-sizing: border-box;
+}
+</style>
+</head>
+<!--  -->
 <body>
-	<div>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <div class="container">
 		<form>
 			<br />
 			<h2>게시글 상세보기</h2>
 			<input type="hidden" id="username" name="username"
 				value="${memberVO.username }"> <br />
-			<div>
-				게시글 번호: <input type="text" id="id" name="id"
-					value="${boarduser.bnum}" readonly="readonly">
-			</div>
-			<div>
-				제목 : <input type="text" id="title" name="title"
-					value="${boarduser.title}" readonly="readonly">
-			</div>
-			<div>
-				작성자: <input type="text" id="writer" name="writer"
-					value="${boarduser.writer}" readonly="readonly">
-			</div>
-			<div>
-				내용: <input type="text" id="email" name="email"
-					value="${boarduser.content}" readonly="readonly">
-			</div>
-			<p>조회수 : ${boarduser.hitCnt}</p>
-			<c:choose>
-				<c:when test="${ not empty memberVO }">
-					<p>추천수 :${ bl.cntlike }</p>
-					<input type="button" value="좋아요" id="likeit" name="likeit">
-				</c:when>
-			</c:choose>
+			<table class="table table-bordered">
+            <colgroup>
+               <col style="width: 20%;">
+               <col style="width: 80%">
+            </colgroup>	
 
-			<button type="button" id="btnUpdate">수정</button>
-			<button type="button" id="btnDelete">삭제</button>
-		</form>
-	</div><br /><br />
+			           <tr>
+               <th>게시글 번호</th>
+
+               <td id="id" name="id" readonly="readonly">${boarduser.bnum}</td>
+            </tr>
+            <tr>
+			               <th>제목</th>
+               <td id="title" name="title" readonly="readonly">${boarduser.title}</td>
+            </tr>
+            <tr>
+               <th>작성자</th>
+               <td id="writer" name="writer" readonly="readonly">${boarduser.writer}</td>
+            </tr>
+            <tr>
+              <th>내용</th>
+               <td id="email" name="email" readonly="readonly">${boarduser.content}</td>
+            </tr>
+            <tr>
+              <th>첨부파일</th>
+               <td>
+                  <a href="${boarduser.uploadpath}"><img src="${boarduser.uploadpath}"/></a>
+               </td>
+            </tr>
+                        <tr>
+               <th>등록일</th>
+               <td id="regDate" name="regDate" readonly="readonly">${boarduser.regDate}</td>
+            </tr>
+
+         </table>
+         <div class="ln_solid"></div>
+         
+         <c:choose>
+            <c:when test="${ not empty memberVO }">
+               <p>추천수 :${ bl.cntlike }</p>
+               <input type="button" value="좋아요" id="likeit" name="likeit" class="btn btn-danger  btn-sm">
+               <a href="/boarduser/update/${boarduser.id}" class="btn btn-danger  btn-sm">수정하기</a>
+               <button type="button" id="btnDelete" class="btn btn-danger  btn-sm">삭제</button>
+            </c:when>
+         </c:choose>
+		</form><br /><hr />
+	<br />
 <div>
 	<textarea rows="3" cols="50" id="msg"></textarea>
 	<input type="button" value="댓글쓰기" id="btnComment">
-</div><hr />
-<div id="replyResult"></div>
+</div>
+<div id="replyResult"></div></div>
 <script>
 var init = function() {
 	$.ajax({

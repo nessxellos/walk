@@ -1,41 +1,92 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="../includes/header.jsp"%>
+
 
 <!DOCTYPE html>
 <html>
-<title>유저 정보 보기</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<title>게시글 상세 보기</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
+<style>
+body {
+   margin-top: 0px
+}
+
+* {
+   margin: 0px;
+   padding: 0px;
+   box-sizing: border-box;
+}
+</style>
+</head>
+<!--  -->
 <body>
-	<div>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <div class="container">
+		<form>
+			<br />
+			<h2>게시글 상세보기</h2>
 		<br />
-		<h2>게시글 상세보기</h2>
-		<br />
-		<div>
-			게시글 번호: <input type="text" id="id" name="id" value="${boardadmin.bnum}" readonly="readonly">
-		</div>
-		<div>
-			제목 : <input type="text" id="username" name="username" value="${boardadmin.title}" readonly="readonly">
-		</div>
-		<div>
-			작성자:<input type="text" id="regdate" name="regdate" value="${boardadmin.writer}" readonly="readonly">
-		</div>
-		<div>
-			내용:<input type="text" id="email" name="email" value="${boardadmin.content}" readonly="readonly">
-		</div>
+			<table class="table table-bordered">
+            <colgroup>
+               <col style="width: 20%;">
+               <col style="width: 80%">
+            </colgroup>	
 
+			           <tr>
+               <th>게시글 번호</th>
 
-		<button type="button" id="btnUpdate" >수정</button>
-		<button type="button" id="btnDelete" >삭제</button>
+               <td id="id" name="id" readonly="readonly">${boardadmin.bnum}</td>
+            </tr>
+            <tr>
+			               <th>제목</th>
+               <td id="title" name="title" readonly="readonly">${boardadmin.title}</td>
+            </tr>
+            <tr>
+               <th>작성자</th>
+               <td id="writer" name="writer" readonly="readonly">${boardadmin.writer}</td>
+            </tr>
+            <tr>
+              <th>내용</th>
+               <td id="email" name="email" readonly="readonly">${boardadmin.content}</td>
+            </tr>
+            <tr>
+              <th>첨부파일</th>
+               <td>
+                  <a href="${boardadmin.uploadpath}"><img src="${boardadmin.uploadpath}"/></a>
+               </td>
+            </tr>
+                        <tr>
+               <th>등록일</th>
+               <td id="regDate" name="regDate" readonly="readonly">${boardadmin.regDate}</td>
+            </tr>
 
-	</div>
-	<br />
+         </table>
+         <div class="ln_solid"></div>
+
+         <c:choose>
+            <c:when test="${ not empty memberVO }">
+               <a href="/boarduser/update/${boarduser.id}" class="btn btn-danger  btn-sm">수정하기</a>
+               <button type="button" id="btnDelete" class="btn btn-danger  btn-sm">삭제</button>
+            </c:when>
+         </c:choose>
+		</form><br /><hr />
 	<br />
 <div>
 	<textarea rows="3" cols="50" id="msg"></textarea>
 	<input type="button" value="댓글쓰기" id="btnComment">
 </div><hr />
-<div id="replyResult"></div>
+<div id="replyResult"></div></div>
 <script>
 var init = function() {
 	$.ajax({
