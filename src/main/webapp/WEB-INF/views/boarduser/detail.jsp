@@ -100,7 +100,7 @@ $("#btnComment").click(function() {
 $("#btnUpdate").click(function() {
 	if (!confirm('정말 수정할까요?'))
 		return false;
-	location.href = "/update/${board.num}"
+	location.href = "/boarduser/update/${boarduser.bnum}"
 })
 
 // 게시판 글 삭제
