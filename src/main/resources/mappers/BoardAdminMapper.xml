@@ -36,7 +36,7 @@
 		<![CDATA[
 		UPDATE boardadminvo 
 		SET title = #{title}, content = #{content} 
-		WHERE bnum = #{bnum}
+		WHERE id = #{id}
 		]]>
 	</select>
 	

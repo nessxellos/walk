@@ -60,7 +60,6 @@ public class BoardUserController {
 	public String detail(@PathVariable int id, Model model) {
 		BoardUserVO boarduser = boarduserservice.detail(id);
 		model.addAttribute("boarduser", boarduser);
-		
 		int b_id = boardlikeservice.totLike(boarduser.getId());
 		BoardLike bl = new BoardLike();
 		bl.setCntlike(b_id);
@@ -179,7 +178,6 @@ public class BoardUserController {
 	// 댓글리스트
 	@GetMapping("commentList")
 	public List<CommentUserVO> list(int boarduservo_id) {
-		System.out.println(boarduservo_id);
 		List<CommentUserVO> clist = commentuserservice.list(boarduservo_id);
 		return clist;
 	}

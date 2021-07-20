@@ -3,10 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="includes/header.jsp"%>
 
-<!DOCTYPE html>
-<html>
-
-
   <div class="main-banner" id="top">
     <div class="container">
       <div class="row">
@@ -16,40 +12,40 @@
               <div class="owl-carousel owl-banner">
                 <div class="item header-text">
                   <h6>산책을 하러가실까요?</h6>
-                  <h2>강아지랑 산책 <em>친구들과 산책</em> 또는 <span>혼자 산책</span></h2>
-                  <p>음하하하</p>
+                  <h2>시원한 <em>바람쐬러</em> 산책 <br><span>할래요?</span></h2>
+                  <p>같이 걷을래요?</p>
                   <div class="down-buttons">
                     <div class="main-blue-button-hover">
-                      <a href="#contact">강아지랑 산책</a>
+                      <a href="#contact">문의사항</a>
                     </div>
                     <div class="call-button">
-                      <a href="#"><i class="fa fa-phone"></i> 010-11</a>
+                      <a href="#"><i class="fa fa-phone"></i> 010-1234-5678</a>
                     </div>
                   </div>
                 </div>
                 <div class="item header-text">
                   <h6>산책을 하러가실까요?</h6>
-                  <h2>강아지랑 산책 <em>친구들과 산책</em> 또는 <span>혼자 산책</span></h2>
-                  <p>음하하하</p>
+                  <h2>강아지랑<em>산책 </em>친구들과 <br><span>산책</span></h2>
+                  <p>같이 걷을래요?</p>
                   <div class="down-buttons">
                     <div class="main-blue-button-hover">
-                      <a href="#services">친구들과 산책</a>
+                      <a href="#services">문의사항 산책</a>
                     </div>
                     <div class="call-button">
-                      <a href="#"><i class="fa fa-phone"></i> 010-22</a>
+                      <a href="#"><i class="fa fa-phone"></i> 010-1234-5678</a>
                     </div>
                   </div>
                 </div>
                 <div class="item header-text">
                   <h6>산책을 하러가실까요?</h6>
-                  <h2>강아지랑 산책 <em>친구들과 산책</em> 또는 <span>혼자 산책</span></h2>
-                  <p>음하하하</p>
+                  <h2>햇살 <em>좋은</em> 날엔 <span>산책</span></h2>
+                  <p>같이 걷을래요?</p>
                   <div class="down-buttons">
                     <div class="main-blue-button-hover">
-                      <a href="#video">혼자산책</a>
+                      <a href="#video">문의사항</a>
                     </div>
                     <div class="call-button">
-                      <a href="#"><i class="fa fa-phone"></i> 010-33</a>
+                      <a href="#"><i class="fa fa-phone"></i> 010-1234-5678</a>
                     </div>
                   </div>
                 </div>
@@ -61,10 +57,7 @@
     </div>
   </div>
 
-  
-
-  
-
+ 
 
   <!-- Scripts -->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -78,14 +71,11 @@
   // Acc
     $(document).on("click", ".naccs .menu div", function() {
       var numberIndex = $(this).index();
-
       if (!$(this).is("active")) {
           $(".naccs .menu div").removeClass("active");
           $(".naccs ul li").removeClass("active");
-
           $(this).addClass("active");
           $(".naccs ul").find("li:eq(" + numberIndex + ")").addClass("active");
-
           var listItemHeight = $(".naccs ul")
             .find("li:eq(" + numberIndex + ")")
             .innerHeight();
@@ -96,6 +86,7 @@
 
 	<div class="container100">
 
+   
     </div>
     
     <footer>
