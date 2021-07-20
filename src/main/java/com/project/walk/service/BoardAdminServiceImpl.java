@@ -31,6 +31,7 @@ public class BoardAdminServiceImpl implements BoardAdminService {
 
 	@Override
 	public BoardAdminVO detail(int id) {
+		boardadminMapper.updateHitcount(id);
 		return boardadminMapper.detail(id);
 	}
 

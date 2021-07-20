@@ -47,4 +47,13 @@
 		WHERE bnum = #{bnum}
 		]]>
 	</delete>
+	
+	<select id="updateHitcount">
+		<![CDATA[
+		UPDATE boardadminvo
+		SET hitcnt = hitcnt+1
+		WHERE id = #{id}
+		]]>
+	</select>
+	
 </mapper>

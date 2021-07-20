@@ -150,7 +150,7 @@ public class BoardAdminController {
 	@PostMapping("update")
 	public String update(BoardAdminVO boardadminvo) {
 		boardadminservice.update(boardadminvo);
-		return "boardadmin/list";
+		return "redirect:/boardadmin/detail/"+boardadminvo.getBnum();
 	}
 
 	// 삭제하기

@@ -58,20 +58,17 @@ var init = function() {
 			"boarduservo_id" : ${boarduser.id}
 		}
 	}).done(
-			function(resp) {
-				//alert(resp.length)
-				
+			function(resp) {				
 				var str ="";
 				$.each(resp, function(key, val){
 					str += "작성자: " + val.username
-					str += " 내용: " + val.content
-					str += " 현재시간: " + val.regdate
+					str += "내용: " + val.content
+					str += "작성일: " + val.regdate
 					str +=" <a href='javascript:fdel(" + val.id + ")'>삭제</a><br>"
 					
-				})
-				
+				})		
 				$("#replyResult").html(str);
-			}).fail(function(e) {
+	}).fail(function(e) {
 		alret("실패")
 	})
 }
@@ -82,7 +79,7 @@ $("#btnComment").click(function() {
 		return;
 	}
 	data = {
-		"username" : ${boarduser.writer},
+		"username" : $("#username").val(),
 		"boarduservo_id" : ${boarduser.id},
 		"content" : $("#msg").val()
 	}
@@ -92,20 +89,21 @@ $("#btnComment").click(function() {
 		contentType : "application/json;charset=utf-8",
 		data : JSON.stringify(data)
 	}).done(function() {
-		alert("댓글 추가 성공")
+		alert("댓글 작성 성공")
 		init()
 	}).fail(function() {
-		alert("댓글 추가 실패")
+		alert("댓글 작성 실패")
 	})
 })
 
-
+// 게시판 글 수정
 $("#btnUpdate").click(function() {
 	if (!confirm('정말 수정할까요?'))
 		return false;
 	location.href = "/update/${board.num}"
 })
 
+// 게시판 글 삭제
 $("#btnDelete").click(function() {
 	if (!confirm('정말 삭제할까요?'))
 		return false;
@@ -121,16 +119,14 @@ $("#btnDelete").click(function() {
 	})//ajax
 }) //btnDelete
 
-
 /* 댓글 삭제  */
-
 function fdel(id) {
 	//alert(id)
 	$.ajax({
 		type : "DELETE",
 		url : "/reply/delete/" + id
 	}).done(function(resp) {
-		alert(resp + "번 글 삭제 완료")
+		alert("댓글이 삭제되었습니다.")
 		init()
 	}).fail(function(e) {
 		alert("댓글 삭제 실패")
