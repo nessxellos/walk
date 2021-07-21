@@ -71,7 +71,7 @@ button {
 				value="${member.addr}" readonly="readonly"></td>
 				</tr>
 		</table>
-		<button type="button" id="btnUpdate" >수정</button>
+		<a href="/member/update/${member.id}"><button  type="button" id="btnUpdate" >수정</button></a>
 		<button type="button" id="btnDelete" >탈퇴</button>
 
 	</div>
@@ -82,13 +82,8 @@ $("#btnDelete").click(function() {
 	if (!confirm('정말 탈퇴하시겠습니까?'))
 		return false;
 	location.href = "/member/remove"
-}) 
+})
 
-$("#btnUpdate").click(function() {
-	if (!confirm('회원정보를 수정하시겠습니까?'))
-		return false;
-	location.href = "/member/update"+{member.id}
-}) 
 </script>
 </body>
 </html>

@@ -9,7 +9,7 @@
 <style>
 
 input {
-	border-radius: 20px;
+   border-radius: 20px;
 }
 
 
@@ -80,7 +80,12 @@ table {
     });
   </script>
   
-<center><br/><br/><br/><br/><br/><br/>
+<center><br/><br/><br/><br/><br/>
+<div align="center">
+<span style=" font: italic bold 1.5em/1em Georgia, serif ;">
+<br/>회원 가입
+</span>
+</div>
 <div id="login">
 <form action="join" method="post">
 <table>
@@ -113,15 +118,9 @@ table {
 </div>
 </center>
 
-
-
-
-
-
 <div class="footer-dec">
     <img src="assets/images/footer-dec.png" alt="">
   </div>
-
   <footer>
     <div class="container">
       <div class="row">

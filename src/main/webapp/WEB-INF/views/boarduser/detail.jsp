@@ -96,7 +96,7 @@ body {
      </c:when>
 </c:choose>
 <div id="replyResult"></div>
-
+<hr/>
 </div>
 <script>
 var init = function() {
@@ -110,10 +110,10 @@ var init = function() {
 			function(resp) {				
 				var str ="";
 				$.each(resp, function(key, val){
-					str += " " + val.content
-					str += " 작성자: " + val.username
-					str += "작성일  : " + val.regdate
-					str +=" <a href='javascript:fdel(" + val.id + ")'>삭제</a><br>"
+					str += "&nbsp;&nbsp; " + val.content
+					str += " &nbsp;&nbsp;&nbsp;작성자 : " + val.username
+					str += " &nbsp;&nbsp;&nbsp;작성일 : " + val.regdate
+					str +=" &nbsp;&nbsp;&nbsp;<a href='javascript:fdel(" + val.id + ")'>삭제</a><br>"
 					
 				})		
 				$("#replyResult").html(str);
@@ -147,15 +147,19 @@ $("#btnComment").click(function() {
 
 // 게시판 글 수정
 $("#btnUpdate").click(function() {
-	if (!confirm('정말 수정할까요?'))
+	if ( $("#username").val() != "${boarduser.writer}") {
+		alert("작성자 정보가 일치하지 않습니다.");
 		return false;
-	location.href = "/boarduser/update/${boarduser.id}"
+	} else {
+	location.href = "/boarduser/update/${boarduser.id}"}
 })
 
 // 게시판 글 삭제
 $("#btnDelete").click(function() {
-	if (!confirm('정말 삭제할까요?'))
+	if ( $("#username").val() != "${boarduser.writer}") {
+		alert("작성자 정보가 일치하지 않습니다.");
 		return false;
+	}
 	$.ajax({
 		type : "delete",
 		url : "/boarduser/delete/"+${boarduser.id},

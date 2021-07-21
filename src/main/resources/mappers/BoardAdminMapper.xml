@@ -44,7 +44,7 @@
 		<![CDATA[
 		DELETE 
 		FROM boardadminvo
-		WHERE bnum = #{bnum}
+		WHERE id = #{id}
 		]]>
 	</delete>
 	

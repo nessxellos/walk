@@ -112,7 +112,7 @@ h1 {
 <br><br>
 <div align="center">
 <span style=" font: italic bold 1.5em/1em Georgia, serif ;">
-관리자 게시판 List
+관리자 추천 산책로
 </span>
 </div>
 

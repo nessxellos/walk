@@ -38,6 +38,14 @@
 		]]>
 	</select>
 	
+	<select id="update">
+		<![CDATA[
+		UPDATE membervo
+		SET password = #{password}, email = #{email}, addr = #{addr}
+		WHERE id = #{id}
+		]]>
+	</select>
+	
 	<delete id="remove">
 		<![CDATA[
 		DELETE 

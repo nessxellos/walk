@@ -76,7 +76,7 @@ body {
          <div class="ln_solid"></div>
 
          <c:choose>
-            <c:when test="${ not empty memberVO }">
+            <c:when test="${ memberVO.auth eq 2 }">
                <a href="/boardadmin/update/${boardadmin.id}" class="btn btn-danger  btn-sm">수정하기</a>
                <button type="button" id="btnDelete" class="btn btn-danger  btn-sm">삭제</button>
             </c:when>
@@ -94,8 +94,8 @@ body {
      </c:when>
 </c:choose>
 
-<hr />
-<div id="replyResult"></div></div>
+
+<div id="replyResult"></div><hr/></div>
 <script>
 var init = function() {
 	$.ajax({
@@ -108,10 +108,10 @@ var init = function() {
 		function(resp) {
 			var str = "";
 			$.each(resp, function(key, val) {
-				str += "작성자: " + val.username
-				str += "내용: " + val.content
-				str += "작성일: " + val.regdate
-				str += "<a href='javascript:fdel(" + val.id + ")'>삭제</a><br>"
+				str += "&nbsp;&nbsp; " + val.content
+				str += "&nbsp;&nbsp;&nbsp;작성자: " + val.username
+				str += "&nbsp;&nbsp;&nbsp;작성일: " + val.regdate
+				str += "&nbsp;&nbsp;&nbsp;<a href='javascript:fdel(" + val.id + ")'>삭제</a><br>"
 			})
 				$("#replyResult").html(str);
 	}).fail(function(e) {
@@ -143,9 +143,11 @@ $("#btnComment").click(function() {
 })
 // 게시판 글 수정
 $("#btnUpdate").click(function() {
-	if (!confirm('정말 수정할까요?'))
+	if ( $("#username").val() != "${boardadmin.writer}") {
+		alert("작성자 정보가 일치하지 않습니다.");
 		return false;
-	location.href = "/boardadmin/update/${boardadmin.id}"
+	} else {
+	location.href = "/boardadmin/update/${boardadmin.id}"}
 })
 
 // 게시판 글 삭제

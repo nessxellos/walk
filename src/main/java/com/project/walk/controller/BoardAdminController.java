@@ -156,10 +156,10 @@ public class BoardAdminController {
 	}
 
 	// 삭제하기
-	@DeleteMapping("delete/{bnum}")
+	@DeleteMapping("delete/{id}")
 	@ResponseBody
-	public String delete(@PathVariable int bnum) {
-		boardadminservice.delete(bnum);
+	public String delete(@PathVariable int id) {
+		boardadminservice.delete(id);
 		return "success";
 	}
 
