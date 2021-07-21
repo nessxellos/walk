@@ -281,7 +281,7 @@
                 <c:forEach items="${ lists }" var="membervo"><br/>
                     <tr>
                         <td class=""><a class="checkbox_checked" href="javascript:;" >✓</a></td>
-                        <td class=""><a href="/member/detail/${membervo.id }">${ membervo.id } </a></td>
+                        <td class=""><a href="/member/detailadm/${membervo.id }">${ membervo.id } </a></td>
                         <td class="">${ membervo.username }</td>
                         <td class="">${ membervo.email }</td>
                         <td class="">${ membervo.addr }</td>
@@ -293,5 +293,18 @@
                 </tbody>
 
 </table>
+
+<script>
+var chkAuth = function(){
+ 	if (${memberVO.auth} != 2) {
+		alert("이용 권한이 없습니다.")
+		location.href = "/";
+	} else if (${memberVO.auth} == 2) {
+
+	}
+
+}
+chkAuth();
+</script>
 </body>
 </html>

@@ -58,6 +58,14 @@ public class MemberController {
 		return "member/detail";
 	}
 	
+	// 회원 상세보기(관리자메뉴)
+	@GetMapping("detailadm/{id}")
+	public String detailamd(@PathVariable int id, Model model) {
+		MemberVO member = memberservice.detail(id);
+		model.addAttribute("member", member);
+		return "member/detailadm";
+	}
+	
 	//수정폼
 	@GetMapping("update/{id}")
 	public String update(Model model, @PathVariable int id) {

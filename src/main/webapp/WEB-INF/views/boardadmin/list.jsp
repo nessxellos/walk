@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt"%>  
 <%@ include file="../includes/header.jsp"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,6 +96,10 @@ h1 {
   letter-spacing: .05em;
   margin: 2em 0 0 0;
 }
+
+.a1{
+	padding-left: 73em
+}
 </style>
 
 
@@ -105,6 +110,22 @@ h1 {
 
 <!--  -->
 <br><br>
+<div align="center">
+<span style=" font: italic bold 1.5em/1em Georgia, serif ;">
+관리자 게시판 List
+</span>
+</div>
+
+         <c:choose>
+            <c:when test="${ not empty memberVO }">
+<div class="a1">
+
+<a href="insert">글쓰기</a>
+</div>
+            </c:when>
+         </c:choose>
+<br>
+<hr>
 <c:forEach items="${ lists }" var="boardadminvo">                      		                   		
 <div class="support-grid"></div>
 
@@ -133,6 +154,7 @@ h1 {
       <a href="/boardadmin/detail/${boardadminvo.id }" class="card">
         <article>
           <h1><span>조회수 : ${ boardadminvo.hitCnt }</span></h1>
+          <span>글번호 : ${boardadminvo.bnum }</span>
           <p> ${boardadminvo.content}  </p>
         </article>
       </a>
@@ -142,8 +164,5 @@ h1 {
   <br>
 </c:forEach>
 
-<!--  -->
-<br><br>
-<a href="insert">글쓰기</a>
 </body>
 </html>

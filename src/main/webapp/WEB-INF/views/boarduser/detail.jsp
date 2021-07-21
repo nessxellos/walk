@@ -87,11 +87,17 @@ body {
          </c:choose>
 		</form><br /><hr />
 	<br />
+<c:choose>
+     <c:when test="${ not empty memberVO }">
 <div>
 	<textarea rows="3" cols="50" id="msg"></textarea>
 	<input type="button" value="댓글쓰기" id="btnComment">
 </div>
-<div id="replyResult"></div></div>
+     </c:when>
+</c:choose>
+<div id="replyResult"></div>
+
+</div>
 <script>
 var init = function() {
 	$.ajax({
@@ -104,9 +110,9 @@ var init = function() {
 			function(resp) {				
 				var str ="";
 				$.each(resp, function(key, val){
-					str += "작성자: " + val.username
-					str += "내용: " + val.content
-					str += "작성일: " + val.regdate
+					str += " " + val.content
+					str += " 작성자: " + val.username
+					str += "작성일  : " + val.regdate
 					str +=" <a href='javascript:fdel(" + val.id + ")'>삭제</a><br>"
 					
 				})		
@@ -184,7 +190,7 @@ $("#likeit").click(function(){
 	}
 	$.ajax({
 		type:"POST",
-		url:"/boarduser/like/"+$("#id").val(),
+		url:"/boarduser/like/"+${boarduser.id},
 		contentType:"application/json;charset=utf-8",
 		data:JSON.stringify(data)
 	})

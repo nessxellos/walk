@@ -81,12 +81,20 @@ body {
                <button type="button" id="btnDelete" class="btn btn-danger  btn-sm">삭제</button>
             </c:when>
          </c:choose>
-		</form><br /><hr />
+		</form><br />
 	<br />
+	
+<c:choose>
+     <c:when test="${ not empty memberVO }">
+     <hr />
 <div>
 	<textarea rows="3" cols="50" id="msg"></textarea>
 	<input type="button" value="댓글쓰기" id="btnComment">
-</div><hr />
+</div>
+     </c:when>
+</c:choose>
+
+<hr />
 <div id="replyResult"></div></div>
 <script>
 var init = function() {

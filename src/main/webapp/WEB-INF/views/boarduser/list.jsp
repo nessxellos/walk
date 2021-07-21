@@ -95,6 +95,11 @@ h1 {
   letter-spacing: .05em;
   margin: 2em 0 0 0;
 }
+
+.a1{
+	padding-left: 73em
+}
+
 </style>
 
 
@@ -105,6 +110,22 @@ h1 {
 
 <!--  -->
 <br><br>
+<div align="center">
+<span style=" font: italic bold 1.5em/1em Georgia, serif ;">
+유저 게시판
+</span>
+</div>
+         <c:choose>
+            <c:when test="${ not empty memberVO }">
+<div class="a1">
+
+<a href="insert">글쓰기</a>
+</div>
+            </c:when>
+         </c:choose>
+<br>
+<hr>
+
 <c:forEach items="${ lists }" var="boarduservo">                       		                   		
 <div class="support-grid"></div>
 
@@ -132,7 +153,8 @@ h1 {
     <div class="item-3">
       <a href="/boarduser/detail/${boarduservo.id }" class="card">
         <article>
-          <h1><span>조회수 : ${ boarduservo.hitCnt }</span></h1>
+          <h1><span>글번호 : ${boarduservo.bnum }</span></h1>
+          <span>조회수 : ${ boarduservo.hitCnt }</span>
           <span>추천수 : ${boarduservo.likeCnt}</span>
           <p> ${boarduservo.content}  </p>
         </article>
@@ -144,12 +166,6 @@ h1 {
 </c:forEach>
 
 <!--  -->
-
-
-
-
-<br><br>
-<a href="insert">글쓰기</a>
 
 
 </body>

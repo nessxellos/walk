@@ -71,6 +71,7 @@ https://templatemo.com/tm-565-onix-digital
                            <li class="scroll-to-section"><a href="/boardadmin/list">추천 산책로</a></li>
                            <li class="scroll-to-section"><a href="/boarduser/list">게시판</a></li>
                            <li class="scroll-to-section"><a href="/boarduser/best">Best 인기글</a></li>
+                           <li class="scroll-to-section"><a href="/member/detail/${memberVO.id}">내정보 보기</a></li>
                            <li class="scroll-to-section"><a href="/member/list">회원목록</a></li>
 
                         </c:when>

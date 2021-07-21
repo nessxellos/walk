@@ -23,6 +23,7 @@ button {
 	background-color: #4CAF50;
 	border-radius: 20px;
 	margin-bottom: 10%;
+	margin-left: 500px;
 }
 
 </style>
@@ -71,24 +72,57 @@ button {
 				value="${member.addr}" readonly="readonly"></td>
 				</tr>
 		</table>
-		<button type="button" id="btnUpdate" >수정</button>
-		<button type="button" id="btnDelete" >탈퇴</button>
 
+		</div>
+		<c:choose>
+    <c:when test="${ member.auth eq 3 }"><br/>    
+		<input type="button" value="매니저 권한 부여"  id="giveAuth" name="giveAuth">
+	</c:when>
+	<c:when test="${ member.auth eq 2 }"><br/>    
+		<input type="button" value="매니저 권한 회수" id="removeAuth" name="removeAuth">
+	</c:when>
+</c:choose>	
 	</div>
 	<br />
 	<br />
-<script>
-$("#btnDelete").click(function() {
-	if (!confirm('정말 탈퇴하시겠습니까?'))
-		return false;
-	location.href = "/member/remove"
-}) 
 
-$("#btnUpdate").click(function() {
-	if (!confirm('회원정보를 수정하시겠습니까?'))
-		return false;
-	location.href = "/member/update"+{member.id}
-}) 
+<script>
+$("#giveAuth").click(function(){
+	data = {
+			"id" : $("#id").val(),
+	}
+	$.ajax({
+		type:"POST",
+		url:"/member/giveAuth/"+${member.id},
+ 		contentType:"application/json;charset=utf-8",
+		data:JSON.stringify(data)
+ 	})
+	.done(function(){
+		alert("관리자 권한을 부여했습니다.");
+		location.href = "/member/detailadm/"+${member.id};
+	})
+	.fail(function(){
+		alert("잘못된 작업입니다.");
+	})
+})
+$("#removeAuth").click(function(){
+	data = {
+			"id" : $("#id").val(),
+	}
+	$.ajax({
+		type:"POST",
+		url:"/member/giveAuth/"+${member.id},
+ 		contentType:"application/json;charset=utf-8",
+		data:JSON.stringify(data)
+ 	})
+	.done(function(){
+		alert("관리자 권한을 회수했습니다.");
+		location.href = "/member/detailadm/"+${member.id};
+	})
+	.fail(function(){
+		alert("잘못된 작업입니다.");
+	})
+})
 </script>
 </body>
 </html>

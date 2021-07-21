@@ -112,6 +112,11 @@ h1 {
   
 </div>
 <br/><br/><br/><br/>
+<div align="center">
+<span style=" font: italic bold 1.5em/1em Georgia, serif ;">
+<br/>Best 인기 게시판
+</span>
+</div><br/><br/>
 <div class="support-grid"></div>
 
   <div class="band">
